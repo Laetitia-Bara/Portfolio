@@ -64,7 +64,7 @@ export default function HomePage() {
             </a>
           </div>
           <p className="mt-4 text-xs text-zinc-500">
-            (Tu pourras remplacer les # par tes vrais liens quand tu veux.)
+            + Réseaux sociaux
           </p>
         </div>
       </Section>
