@@ -56,10 +56,10 @@ export default function HomePage() {
             </a>
           </p>
           <div className="mt-3 flex flex-wrap gap-4 text-sm text-zinc-300">
-            <a className="underline decoration-white/20 underline-offset-4 hover:decoration-white/60" href="#" target="_blank" rel="noreferrer">
+            <a className="underline decoration-white/20 underline-offset-4 hover:decoration-white/60" href="https://github.com/Laetitia-Bara" target="_blank" rel="noopener noreferrer">
               GitHub
             </a>
-            <a className="underline decoration-white/20 underline-offset-4 hover:decoration-white/60" href="www.linkedin.com/in/bara-laetitia" target="_blank" rel="noreferrer">
+            <a className="underline decoration-white/20 underline-offset-4 hover:decoration-white/60" href="https://www.linkedin.com/in/bara-laetitia" target="_blank" rel="noopener noreferrer">
               LinkedIn
             </a>
           </div>
