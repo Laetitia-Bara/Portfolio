@@ -11,15 +11,6 @@ export default function Footer() {
             <Link href="/legal" className="hover:text-zinc-200">
               Legal
             </Link>
-            <Link href="/legal/privacy" className="hover:text-zinc-200">
-              Confidentialité
-            </Link>
-            <Link href="/legal/cgu" className="hover:text-zinc-200">
-              CGU
-            </Link>
-            <Link href="/legal/cgv" className="hover:text-zinc-200">
-              CGV
-            </Link>
           </div>
         </div>
       </Container>

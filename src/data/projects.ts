@@ -23,8 +23,8 @@ export const projects: Project[] = [
     ],
     links: [
       { label: "Case study", href: "/projects/bob" },
-      { label: "App Store", href: "#" },
-      { label: "Google Play", href: "#" },
+      { label: "App Store", href: "https://apps.apple.com/app/bob-carnet-dexpos-canines/id6749371300" },
+      { label: "Google Play", href: "https://play.google.com/store/apps/details?id=fr.cosmoslty.bob" },
     ],
   },
   {
@@ -41,7 +41,7 @@ export const projects: Project[] = [
     ],
     links: [
       { label: "Démo", href: "https://weekendly.cosmos-lty.fr" },
-      { label: "Code", href: "#" },
+      { label: "Code", href: "https://github.com/Laetitia-Bara/weekendly" },
     ],
   },
   {

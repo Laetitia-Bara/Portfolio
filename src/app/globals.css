@@ -20,9 +20,9 @@ body::before {
     z-index: -1;
 
     background:
-        radial-gradient(1200px 700px at 20% 0%, rgba(120, 87, 255, 0.24), transparent 60%),
-        radial-gradient(900px 600px at 80% 10%, rgba(0, 200, 255, 0.16), transparent 55%),
-        radial-gradient(1100px 800px at 50% 100%, rgba(120, 87, 255, 0.16), transparent 65%),
+        radial-gradient(1200px 700px at 20% 0%, rgba(var(--accent-primary), 0.24), transparent 60%),
+        radial-gradient(900px 600px at 80% 10%, rgba(var(--accent-secondary), 0.16), transparent 55%),
+        radial-gradient(1100px 800px at 50% 100%, rgba(var(--accent-tertiary), 0.22), transparent 65%),
         linear-gradient(#07070a, #07070a);
 
     /* Smooth + no seam */
@@ -40,5 +40,116 @@ body::after {
 
     /* Un micro grain (opacity faible) */
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");
-    opacity: 0.06;
+    opacity: var(--sparkle-opacity);
+}
+
+body[data-theme="pro"] {
+    --accent-primary: 120, 87, 255;
+    --accent-secondary: 0, 200, 255;
+    --accent-tertiary: 180, 120, 255;
+    --sparkle-opacity: 0.02;
+}
+
+body[data-theme="unicorn"] {
+    --accent-primary: 255, 0, 200;
+    --accent-secondary: 0, 255, 255;
+    --accent-tertiary: 180, 0, 255;
+    --sparkle-opacity: 0.06;
+}
+
+/* UNICORN HERO TEXT */
+body[data-theme="unicorn"] .unicorn-text {
+
+    background: linear-gradient(110deg,
+            rgba(255, 0, 200, 0.9),
+            rgba(180, 0, 255, 0.9),
+            rgba(0, 255, 255, 0.9),
+            rgba(255, 0, 200, 0.9));
+
+    background-size: 200% 200%;
+
+    background-clip: text;
+    -webkit-background-clip: text;
+
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+
+    text-shadow:
+        0 0 12px rgba(255, 0, 200, 0.25),
+        0 0 24px rgba(0, 255, 255, 0.15);
+
+    animation: unicornShift 8s ease infinite;
+}
+
+body[data-theme="unicorn"] .card-theme {
+    box-shadow:
+        0 0 0 1px rgba(var(--card-border), 0.35),
+        0 0 25px rgba(var(--card-glow), 0.18),
+        0 0 60px rgba(var(--card-glow), 0.08);
+}
+
+body[data-theme="pro"] {
+    --card-bg: 255, 255, 255;
+    --card-border: 255, 255, 255;
+    --card-glow: 120, 87, 255;
+}
+
+body[data-theme="unicorn"] {
+    --card-bg: 255, 0, 200;
+    --card-border: 0, 255, 255;
+    --card-glow: 255, 0, 200;
+}
+
+@keyframes unicornShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+body[data-theme="pro"] .unicorn-text {
+    color: rgb(var(--accent-primary));
+}
+
+.store-badge {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+body[data-theme="unicorn"] .store-badge:hover {
+    filter:
+        drop-shadow(0 0 6px rgba(var(--accent-primary), 0.4)) drop-shadow(0 0 14px rgba(var(--accent-secondary), 0.3));
+}
+
+.social-linkedin {
+    background: rgba(10, 102, 194, 0.12);
+    border-color: rgba(10, 102, 194, 0.3);
+}
+
+.social-github {
+    background: rgba(10, 102, 194, 0.12);
+    border-color: rgba(10, 102, 194, 0.3);
+}
+
+.social-github:hover {
+    color: white;
+}
+
+.social-linkedin:hover {
+    color: #339cff;
+}
+
+body[data-theme="unicorn"] .social-github:hover {
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.6));
+}
+
+body[data-theme="unicorn"] .social-linkedin:hover {
+    filter: drop-shadow(0 0 8px rgba(10, 102, 194, 0.7));
 }
