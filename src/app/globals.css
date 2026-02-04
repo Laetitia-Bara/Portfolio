@@ -20,14 +20,42 @@ body::before {
     z-index: -1;
 
     background:
-        radial-gradient(1200px 700px at 20% 0%, rgba(var(--accent-primary), 0.24), transparent 60%),
-        radial-gradient(900px 600px at 80% 10%, rgba(var(--accent-secondary), 0.16), transparent 55%),
-        radial-gradient(1100px 800px at 50% 100%, rgba(var(--accent-tertiary), 0.22), transparent 65%),
-        linear-gradient(#07070a, #07070a);
+            /* Overlay sombre principal */
+            linear-gradient(rgba(63, 61, 65, 0.65),
+                    rgba(24, 8, 48, 0.75)),
+    
+            /* Teinte violette UX (optionnelle mais 🔥) */
+            radial-gradient(1200px 800px at 50% 20%,
+                rgba(180, 0, 255, 0.18),
+                transparent 70%),
+    
+            /* Wallpaper */
+            var(--wallpaper-url),
+    
+            /* Tes gradients existants */
+            radial-gradient(1200px 700px at 20% 0%, rgba(var(--accent-primary), 0.24), transparent 60%),
+            radial-gradient(900px 600px at 80% 10%, rgba(var(--accent-secondary), 0.16), transparent 55%),
+            radial-gradient(1100px 800px at 50% 100%, rgba(var(--accent-tertiary), 0.22), transparent 65%),
+            linear-gradient(#07070a, #07070a);
 
-    /* Smooth + no seam */
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size:
+        cover,
+        /* overlay */
+        cover,
+        /* wallpaper */
+        cover, cover, cover,
+        /* gradients */
+        cover;
+    /* base */
+    background-position:
+        center,
+        center,
+        center, center, center,
+        center;
+
+    /* Optionnel: petite “fusion” si l’image est trop présente */
+    filter: blur(var(--wallpaper-blur));
 }
 
 /* Grain léger pour supprimer l'effet "bande" */
@@ -48,6 +76,9 @@ body[data-theme="pro"] {
     --accent-secondary: 0, 200, 255;
     --accent-tertiary: 180, 120, 255;
     --sparkle-opacity: 0.02;
+    --wallpaper-url: none;
+    --wallpaper-opacity: 0;
+    --wallpaper-blur: 0px;
 }
 
 body[data-theme="unicorn"] {
@@ -55,6 +86,11 @@ body[data-theme="unicorn"] {
     --accent-secondary: 0, 255, 255;
     --accent-tertiary: 180, 0, 255;
     --sparkle-opacity: 0.06;
+    --wallpaper-url: url("/wallpapers/unicorn-geek.jpg");
+    --wallpaper-opacity: 0.45;
+        /* ajuste 0.12 -> 0.35 selon lisibilité */
+    --wallpaper-blur: 0px;
+        /* ex: 6px si tu veux le “fondre” */
 }
 
 /* UNICORN HERO TEXT */
