@@ -27,9 +27,10 @@ export default function ProjectCard({ project }: { project: Project }) {
     >
 
       <div className="flex items-start justify-between gap-3">
-        <div className="flex items-start gap-3">
 
-          {/* 🔥 Icône projet */}
+        {/* Ligne 1 : icône + badge */}
+        <div className="flex items-center gap-3">
+
           {project.icon && (
             <div className="
         shrink-0
@@ -40,37 +41,40 @@ export default function ProjectCard({ project }: { project: Project }) {
         backdrop-blur
         transition
         group-hover:scale-105
-        group-hover:shadow-[0_0_12px_rgba(255,255,255,0.15)]
       ">
               <Image
                 src={project.icon}
                 alt={`${project.name} icon`}
-                width={36}
-                height={36}
-                className="h-9 w-9 rounded-lg object-contain"
+                width={32}
+                height={32}
+                className="h-8 w-8 rounded-lg object-contain"
               />
             </div>
           )}
 
-          {/* 🧠 Texte */}
-          <div>
-            <h3 className="text-base font-semibold">{project.name}</h3>
-            <p className="mt-2 text-sm text-zinc-300">{project.headline}</p>
-          </div>
-
         </div>
-        {project.badge ? (
+
+        {project.badge && (
           <span className="
-  shrink-0 rounded-full
-  border border-[rgba(var(--card-border),0.25)]
-  bg-[rgba(var(--card-bg),0.08)]
-  px-3 py-1 text-xs text-zinc-200
-"
-          >
+      shrink-0 rounded-full
+      border border-[rgba(var(--card-border),0.25)]
+      bg-[rgba(var(--card-bg),0.08)]
+      px-3 py-1 text-xs text-zinc-200
+    ">
             {project.badge}
           </span>
-        ) : null}
+        )}
       </div>
+
+      {/* Ligne 2 : titre */}
+      <h3 className="mt-3 text-base font-semibold leading-tight">
+        {project.name}
+      </h3>
+
+      {/* Ligne 3 : description */}
+      <p className="mt-2 text-sm text-zinc-300">
+        {project.headline}
+      </p>
 
       <div className="mt-4 flex flex-wrap gap-2">
         {project.stack.map((t) => (
