@@ -6,6 +6,7 @@ export type Project = {
   features: string[];
   links: { label: string; href: string }[];
   badge?: string;
+  icon?: string;
 };
 
 export const projects: Project[] = [
@@ -14,6 +15,7 @@ export const projects: Project[] = [
     slug: "bob",
     name: "BoB – Carnet d’Expos Canines",
     badge: "Production",
+    icon: "/projects/bob.png",
     headline:
       "Une app mobile pour suivre ses chiens, expos, résultats et titres, avec un historique fiable et partageable.",
     stack: ["Flutter", "Firebase Auth", "Firestore", "Cloudinary", "AdMob"],
@@ -33,6 +35,7 @@ export const projects: Project[] = [
     slug: "lofy",
     name: "Lofy – Gestion d’élevage canin",
     badge: "Web app",
+    icon: "/projects/lofy.png",
     headline:
       "Une web app métier pour piloter son élevage canin : chiens, saillies, portées et rappels, avec une logique de données partagée avec BoB.",
     stack: ["Next.js", "TypeScript", "Firebase Auth", "Firestore", "Cloudinary"],
@@ -51,6 +54,7 @@ export const projects: Project[] = [
     slug: "tempo",
     name: "Tempo - Gestion des plages horaires de travail",
     badge: "Production",
+    icon: "/projects/tempo.png",
     headline:
       "Une app mobile pour suivre ses horaires de travail et ses plages planifiées avec une vision claire des totaux hebdo et mensuels.",
     stack: ["Flutter", "Firebase Auth", "Firestore", "AdMob"],
@@ -70,6 +74,7 @@ export const projects: Project[] = [
     slug: "weekendly",
     name: "WeekEndly",
     badge: "Full-stack",
+    icon: "/projects/weekendly.png",
     headline:
       "Un tableau météo orienté décision pour planifier les sorties du week-end (créneaux, lisibilité mobile, UX).",
     stack: ["React/Next", "Node", "API météo", "Vercel", "UI responsive"],
@@ -89,6 +94,7 @@ export const projects: Project[] = [
     slug: "bootcamp",
     name: "Bootcamp – MyMoviz / Yams",
     badge: "Bootcamp",
+    icon: "/projects/la-capsule.png",
     headline:
       "Des mini-apps pour valider React (state, events, composants) + tests et rigueur front.",
     stack: ["React", "Next", "Jest / Testing Library", "CSS Modules"],
