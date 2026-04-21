@@ -50,7 +50,7 @@ export default function TempoCaseStudy() {
 
                     <div className="mt-6 flex flex-wrap items-center gap-4">
                         <a
-                            href="https://apps.apple.com/us/app/tempoo/id6762077819"
+                            href="https://apps.apple.com/fr/app/tempoo/id6762077819"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="store-badge rounded-xl overflow-hidden transition hover:scale-105"
