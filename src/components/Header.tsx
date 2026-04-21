@@ -40,6 +40,19 @@ export default function Header() {
           </nav>
 
         </div>
+
+        <a
+          href="https://ko-fi.com/cosmoslty"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group flex items-center gap-2 rounded-xl border border-white/10 bg-gradient-to-r from-pink-500/10 to-purple-500/10 px-4 py-2 text-sm text-zinc-100 transition hover:from-pink-500/20 hover:to-purple-500/20"
+        >
+          <span className="text-lg">☕</span>
+          <span className="group-hover:translate-x-0.5 transition">
+            Un café ?
+          </span>
+        </a>
+
       </Container>
     </header>
   );

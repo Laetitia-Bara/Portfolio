@@ -36,6 +36,17 @@ export default function HomePage() {
               fiabilité. Créatrice de BoB, une app mobile dédiée au suivi d’expositions canines.
             </p>
 
+            <p className="text-sm text-zinc-400 mt-2">
+              Si mes projets te plaisent 👉{" "}
+              <a
+                href="https://ko-fi.com/cosmoslty"
+                target="_blank"
+                className="text-zinc-200 underline hover:text-white"
+              >
+                Tu peux m'offrir un café ☕
+              </a>
+            </p>
+
             {/* ✅ Dispo (Alternance / Missions) */}
             <div className="mt-6 flex flex-wrap items-center gap-3">
               <a
