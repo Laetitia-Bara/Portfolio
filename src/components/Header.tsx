@@ -13,7 +13,6 @@ export default function Header() {
     <header className="sticky top-0 z-50 border-b border-white/10 bg-black/40 backdrop-blur">
       <Container>
         <div className="grid h-14 grid-cols-3 items-center">
-
           {/* LEFT — Logo */}
           <div className="flex items-center">
             <Link href="/" className="font-semibold tracking-tight">
@@ -26,33 +25,31 @@ export default function Header() {
             <ThemeToggle />
           </div>
 
-          {/* RIGHT — Nav */}
-          <nav className="flex justify-end items-center gap-4 text-sm text-zinc-300">
-            {nav.map((n) => (
-              <Link
-                key={n.href}
-                href={n.href}
-                className="rounded-lg px-2 py-1 hover:bg-white/5 hover:text-zinc-100"
-              >
-                {n.label}
-              </Link>
-            ))}
-          </nav>
+          {/* RIGHT — Nav + Ko-fi */}
+          <div className="flex justify-end items-center gap-4">
+            <nav className="flex items-center gap-4 text-sm text-zinc-300">
+              {nav.map((n) => (
+                <Link
+                  key={n.href}
+                  href={n.href}
+                  className="rounded-lg px-2 py-1 hover:bg-white/5 hover:text-zinc-100"
+                >
+                  {n.label}
+                </Link>
+              ))}
+            </nav>
 
+            <a
+              href="https://ko-fi.com/cosmoslty"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-fuchsia-400/20 bg-fuchsia-500/5 px-3 py-1 text-xs font-medium text-zinc-200 transition hover:bg-fuchsia-500/10"
+            >
+              <span>☕</span>
+              <span>Un café ?</span>
+            </a>
+          </div>
         </div>
-
-        <a
-          href="https://ko-fi.com/cosmoslty"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-full border border-fuchsia-400/20 bg-fuchsia-500/5 px-3 py-1 text-xs font-medium text-zinc-200 transition hover:bg-fuchsia-500/10"
-        >
-          <span className="text-lg">☕</span>
-          <span className="group-hover:translate-x-0.5 transition">
-            Un café ?
-          </span>
-        </a>
-
       </Container>
     </header>
   );

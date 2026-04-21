@@ -87,18 +87,21 @@ export default function HomePage() {
             <ProjectCard key={p.slug} project={p} />
           ))}
         </div>
-      </Section>
 
-      <p className="text-sm text-zinc-400 mt-2">
-        Si mes projets te plaisent 👉{" "}
-        <a
-          href="https://ko-fi.com/cosmoslty"
-          target="_blank"
-          className="text-zinc-200 underline hover:text-white"
-        >
-          Tu peux m'offrir un café ☕
-        </a>
-      </p>
+        <div className="mt-4">
+          <p className="text-sm text-zinc-400">
+            Si mes projets te plaisent 👉{" "}
+            <a
+              href="https://ko-fi.com/cosmoslty"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-zinc-200 underline decoration-white/20 underline-offset-4 hover:text-white hover:decoration-white/60"
+            >
+              Tu peux m'offrir un café ☕
+            </a>
+          </p>
+        </div>
+      </Section>
 
       <Section title="Contact" >
         <div id="contact" className="rounded-2xl border border-white/10 bg-white/5 p-6">
