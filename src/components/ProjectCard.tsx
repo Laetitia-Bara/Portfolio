@@ -165,7 +165,6 @@ export default function ProjectCard({ project }: { project: Project }) {
               >
                 <div className="text-base">🌐</div>
                 <div className="flex flex-col leading-tight">
-                  <span className="text-[10px] text-zinc-300">Disponible sur</span>
                   <span className="text-xs font-medium">Web App</span>
                 </div>
               </a>

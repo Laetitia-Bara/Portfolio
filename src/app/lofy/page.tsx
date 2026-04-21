@@ -57,7 +57,6 @@ export default function LofyCaseStudy() {
                         >
                             <div className="text-lg">🌐</div>
                             <div className="flex flex-col leading-tight">
-                                <span className="text-xs text-zinc-300">Disponible sur</span>
                                 <span className="font-medium">Web App</span>
                             </div>
                         </a>
