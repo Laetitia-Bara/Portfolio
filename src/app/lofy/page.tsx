@@ -53,9 +53,13 @@ export default function LofyCaseStudy() {
                             href="https://lofy.cosmos-lty.fr"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-sm text-zinc-100 transition hover:bg-white/10"
+                            className="flex items-center gap-3 rounded-xl bg-white/10 px-4 py-2 text-sm text-white backdrop-blur transition hover:bg-white/20"
                         >
-                            Ouvrir Lofy
+                            <div className="text-lg">🌐</div>
+                            <div className="flex flex-col leading-tight">
+                                <span className="text-xs text-zinc-300">Disponible sur</span>
+                                <span className="font-medium">Web App</span>
+                            </div>
                         </a>
                     </div>
                 </div>

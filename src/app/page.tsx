@@ -107,7 +107,7 @@ export default function HomePage() {
                 Recherche alternance 1 an — Full-Stack (La Capsule / formation DevOps).
               </p>
               <p className="mt-2 text-xs text-zinc-400">
-                Démarrage : ?? / <span className="text-zinc-300">2026</span> • Lieu : <span className="text-zinc-300">[Reims/Soissons]</span>
+                Démarrage : ?? / <span className="text-zinc-300">2026</span> • Lieu : <span className="text-zinc-300">[France]</span>
               </p>
             </div>
 
