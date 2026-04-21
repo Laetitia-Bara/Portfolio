@@ -43,7 +43,7 @@ export default function HomePage() {
                 target="_blank"
                 className="text-zinc-200 underline hover:text-white"
               >
-                soutiens-moi sur Ko-fi ☕
+                Tu peux m'offrir un café ☕
               </a>
             </p>
 
