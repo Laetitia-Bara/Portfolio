@@ -36,16 +36,7 @@ export default function HomePage() {
               fiabilité. Créatrice de BoB, une app mobile dédiée au suivi d’expositions canines.
             </p>
 
-            <p className="text-sm text-zinc-400 mt-2">
-              Si mes projets te plaisent 👉{" "}
-              <a
-                href="https://ko-fi.com/cosmoslty"
-                target="_blank"
-                className="text-zinc-200 underline hover:text-white"
-              >
-                Tu peux m'offrir un café ☕
-              </a>
-            </p>
+
 
             {/* ✅ Dispo (Alternance / Missions) */}
             <div className="mt-6 flex flex-wrap items-center gap-3">
@@ -89,7 +80,7 @@ export default function HomePage() {
 
       <Section
         title="Projets"
-        subtitle="mes projets qui montrent du concret : produit en production, full-stack, mobile et web..."
+        subtitle="Mes projets qui montrent du concret : produit en production, full-stack, mobile et web..."
       >
         <div id="projects" className="grid gap-4 md:grid-cols-3">
           {projects.map((p) => (
@@ -97,6 +88,17 @@ export default function HomePage() {
           ))}
         </div>
       </Section>
+
+      <p className="text-sm text-zinc-400 mt-2">
+        Si mes projets te plaisent 👉{" "}
+        <a
+          href="https://ko-fi.com/cosmoslty"
+          target="_blank"
+          className="text-zinc-200 underline hover:text-white"
+        >
+          Tu peux m'offrir un café ☕
+        </a>
+      </p>
 
       <Section title="Contact" >
         <div id="contact" className="rounded-2xl border border-white/10 bg-white/5 p-6">
