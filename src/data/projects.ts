@@ -4,7 +4,7 @@ export type Project = {
   headline: string;
   stack: string[];
   features: string[];
-  links: { label: string; href: string }[];
+  links: { href: string; label?: string; variant?: "webapp" }[];
   badge?: string;
   icon?: string;
 };
@@ -46,7 +46,7 @@ export const projects: Project[] = [
     ],
     links: [
       { label: "Case study", href: "/projects/lofy" },
-      { label: "Web page", href: "https://lofy.cosmos-lty.fr" },
+      { variant: "webapp", href: "https://lofy.cosmos-lty.fr" },
     ],
   },
 
@@ -65,7 +65,7 @@ export const projects: Project[] = [
     ],
     links: [
       { label: "Case study", href: "/projects/tempo" },
-      { label: "App Store", href: "https://apps.apple.com/us/app/tempoo/id6762077819" },
+      { label: "App Store", href: "https://apps.apple.com/fr/app/tempoo/id6762077819" },
       { label: "Google Play", href: "https://play.google.com/store/apps/details?id=fr.cosmoslty.tempo" },
     ],
   },

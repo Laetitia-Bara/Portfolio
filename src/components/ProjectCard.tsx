@@ -4,10 +4,20 @@ import Image from "next/image";
 
 
 export default function ProjectCard({ project }: { project: Project }) {
-  const appStore = project.links.find((l) => l.label.toLowerCase().includes("app store"));
-  const googlePlay = project.links.find((l) => l.label.toLowerCase().includes("google play"));
+  const appStore = project.links.find(
+    (l) => l.label?.toLowerCase().includes("app store")
+  );
+
+  const googlePlay = project.links.find(
+    (l) => l.label?.toLowerCase().includes("google play")
+  );
+
+  const webAppLink = project.links.find(
+    (l) => l.variant === "webapp"
+  );
+
   const otherLinks = project.links.filter(
-    (l) => l !== appStore && l !== googlePlay
+    (l) => l !== appStore && l !== googlePlay && l !== webAppLink
   );
 
 
@@ -103,8 +113,8 @@ export default function ProjectCard({ project }: { project: Project }) {
       </ul>
 
       <div className="mt-5 space-y-3">
-        {/* Badges stores (si présents) */}
-        {(appStore || googlePlay) && (
+        {/* Badges stores / web app */}
+        {(appStore || googlePlay || webAppLink) && (
           <div className="flex flex-wrap items-center gap-3">
             {appStore && (
               <a
@@ -141,6 +151,23 @@ export default function ProjectCard({ project }: { project: Project }) {
                   height={48}
                   className="h-[38px] w-auto"
                 />
+              </a>
+            )}
+
+            {webAppLink && (
+              <a
+                href={webAppLink.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-[38px] items-center gap-3 rounded-xl bg-white/10 px-4 text-sm text-white backdrop-blur transition hover:scale-105 hover:bg-white/20"
+                aria-label="Open web app"
+                title="Web App"
+              >
+                <div className="text-base">🌐</div>
+                <div className="flex flex-col leading-tight">
+                  <span className="text-[10px] text-zinc-300">Disponible sur</span>
+                  <span className="text-xs font-medium">Web App</span>
+                </div>
               </a>
             )}
           </div>
