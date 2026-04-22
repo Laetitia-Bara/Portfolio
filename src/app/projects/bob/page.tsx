@@ -50,39 +50,39 @@ export default function BobCaseStudy() {
 
           <div className="mt-6 flex flex-wrap items-center gap-4">
 
-  {/* Apple */}
-  <a
-    href="https://apps.apple.com/app/bob-carnet-dexpos-canines/id6749371300"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="store-badge rounded-xl overflow-hidden transition hover:scale-105"
-  >
-    <Image
-      src="/stores/apple.png"
-      alt="Download on the App Store"
-      width={140}
-      height={42}
-      className="h-[42px] w-auto"
-    />
-  </a>
+            {/* Apple */}
+            <a
+              href="https://apps.apple.com/fr/app/bob-carnet-dexpos-canines/id6749371300"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="store-badge rounded-xl overflow-hidden transition hover:scale-105"
+            >
+              <Image
+                src="/stores/apple.png"
+                alt="Download on the App Store"
+                width={140}
+                height={42}
+                className="h-[42px] w-auto"
+              />
+            </a>
 
-  {/* Google */}
-  <a
-    href="https://play.google.com/store/apps/details?id=fr.cosmoslty.bob"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="store-badge rounded-xl overflow-hidden transition hover:scale-105"
-  >
-    <Image
-      src="/stores/google.png"
-      alt="Get it on Google Play"
-      width={160}
-      height={48}
-      className="h-[42px] w-auto"
-    />
-  </a>
+            {/* Google */}
+            <a
+              href="https://play.google.com/store/apps/details?id=fr.cosmoslty.bob"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="store-badge rounded-xl overflow-hidden transition hover:scale-105"
+            >
+              <Image
+                src="/stores/google.png"
+                alt="Get it on Google Play"
+                width={160}
+                height={48}
+                className="h-[42px] w-auto"
+              />
+            </a>
 
-</div>
+          </div>
 
         </div>
       </Container>
