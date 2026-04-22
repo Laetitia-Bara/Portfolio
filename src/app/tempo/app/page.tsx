@@ -4,7 +4,7 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
 const ANDROID_URL = "https://play.google.com/store/apps/details?id=fr.cosmoslty.tempo";
-const IOS_URL = "https://apps.apple.com/us/app/tempoo/id6762077819";
+const IOS_URL = "https://apps.apple.com/fr/app/tempoo/id6762077819";
 
 function detectOS(ua: string) {
     const s = ua.toLowerCase();
