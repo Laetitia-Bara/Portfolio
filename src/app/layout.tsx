@@ -18,12 +18,8 @@ export default function RootLayout({
     <html lang="fr">
 
 <head>
-      <Script
-        async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5057499390168934"
-        crossOrigin="anonymous"
-        strategy="afterInteractive"
-      />
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5057499390168934"
+     crossOrigin="anonymous"></script>
     </head>
 
       <body className="text-zinc-100 antialiased">
