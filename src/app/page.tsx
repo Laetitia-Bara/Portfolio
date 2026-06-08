@@ -38,7 +38,7 @@ export default function HomePage() {
 
 
 
-            {/* ✅ Dispo (Alternance / Missions) */}
+            {/* ✅ Dispo (Alternance / CDI-CDD / Missions) */}
             <div className="mt-6 flex flex-wrap items-center gap-3">
               <a
                 href="#contact-alternance"
@@ -47,6 +47,15 @@ export default function HomePage() {
                 <span className="h-2 w-2 rounded-full bg-emerald-400" />
                 <span className="font-semibold">Recherche Alternance</span>
                 <span className="text-zinc-300/90">/ 1 an • Full-Stack</span>
+              </a>
+
+              <a
+                href="#contact-cdi-cdd"
+                className="inline-flex items-center gap-2 rounded-full border border-sky-400/30 bg-sky-400/10 px-3 py-1 text-xs text-zinc-100 backdrop-blur hover:bg-sky-400/15"
+              >
+                <span className="h-2 w-2 rounded-full bg-sky-400" />
+                <span className="font-semibold">Recherche CDI/CDD</span>
+                <span className="text-zinc-300/90">/ Dev</span>
               </a>
 
               <a
@@ -97,7 +106,7 @@ export default function HomePage() {
               rel="noopener noreferrer"
               className="text-zinc-200 underline decoration-white/20 underline-offset-4 hover:text-white hover:decoration-white/60"
             >
-              Tu peux m'offrir un café ☕
+              Tu peux m&apos;offrir un café ☕
             </a>
           </p>
         </div>
@@ -105,7 +114,7 @@ export default function HomePage() {
 
       <Section title="Contact" >
         <div id="contact" className="rounded-2xl border border-white/10 bg-white/5 p-6">
-          <div className="grid gap-4 md:grid-cols-2">
+          <div className="grid gap-4 md:grid-cols-3">
             <div id="contact-alternance" className="scroll-mt-24 rounded-2xl border border-emerald-400/20 bg-emerald-400/5 p-4">
               <p className="text-sm font-semibold text-zinc-100">🟢 Alternance (1 an)</p>
               <p className="mt-1 text-sm text-zinc-300">
@@ -113,6 +122,16 @@ export default function HomePage() {
               </p>
               <p className="mt-2 text-xs text-zinc-400">
                 Démarrage : ?? / <span className="text-zinc-300">2026</span> • Lieu : <span className="text-zinc-300">[France]</span>
+              </p>
+            </div>
+
+            <div id="contact-cdi-cdd" className="scroll-mt-24 rounded-2xl border border-sky-400/25 bg-sky-400/5 p-4">
+              <p className="text-sm font-semibold text-zinc-100">🔵 CDI / CDD</p>
+              <p className="mt-1 text-sm text-zinc-300">
+                Recherche CDI ou CDD en Développement Junior avec expérience complémentaire (Réseau, Gestion de Projet, Support, etc.).
+              </p>
+              <p className="mt-2 text-xs text-zinc-400">
+                Démarrage : <span className="text-zinc-300">Dès que possible</span> • Lieu : <span className="text-zinc-300">[Reims, Soissons, Château-Thierry] / [51, 02] / [France]</span>
               </p>
             </div>
 
