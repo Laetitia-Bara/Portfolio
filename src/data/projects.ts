@@ -51,6 +51,27 @@ export const projects: Project[] = [
   },
 
   {
+    slug: "wow100",
+    name: "WoW100% – Companion de collection WoW",
+    badge: "Production",
+    icon: "/projects/wow100.jpg",
+    headline:
+      "Une app mobile et web pour suivre sa progression World of Warcraft : montures, mascottes, hauts-faits et objectifs par extension.",
+    stack: ["Flutter", "Battle.net OAuth", "Battle.net API", "Web App", "App Store"],
+    features: [
+      "Connexion Battle.net et synchronisation du personnage principal",
+      "Tracking de progression globale et détaillée par extension",
+      "Vue des éléments obtenus / manquants pour viser le 100%",
+    ],
+    links: [
+      { label: "Case study", href: "/projects/wow100" },
+      { label: "App Store", href: "https://apps.apple.com/fr/app/wow100/id6778885180?uo=4" },
+      { label: "Google Play", href: "https://play.google.com/store/apps/details?id=fr.cosmoslty.wow100" },
+      { variant: "webapp", href: "https://wow100.cosmos-lty.fr" },
+    ],
+  },
+
+  {
     slug: "tempo",
     name: "Tempo - Gestion des plages horaires de travail",
     badge: "Production",
