@@ -86,6 +86,24 @@ export default function ProjectCard({ project }: { project: Project }) {
         {project.headline}
       </p>
 
+      {project.tags && project.tags.length > 0 && (
+        <div className="mt-4 flex flex-wrap gap-2">
+          {project.tags.map((tag) => (
+            <span
+              key={tag}
+              className="
+  rounded-full
+  border border-cyan-300/30
+  bg-cyan-300/10
+  px-3 py-1 text-xs font-medium text-cyan-100
+"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
+
       <div className="mt-4 flex flex-wrap gap-2">
         {project.stack.map((t) => (
           <span

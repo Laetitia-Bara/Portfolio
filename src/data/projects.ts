@@ -3,6 +3,7 @@ export type Project = {
   name: string;
   headline: string;
   stack: string[];
+  tags?: string[];
   features: string[];
   links: { href: string; label?: string; variant?: "webapp" }[];
   badge?: string;
@@ -15,6 +16,7 @@ export const projects: Project[] = [
     slug: "bob",
     name: "BoB – Carnet d’Expos Canines",
     badge: "Production",
+    tags: ["Mobile"],
     icon: "/projects/bob.png",
     headline:
       "Une app mobile pour suivre ses chiens, expos, résultats et titres, avec un historique fiable et partageable.",
@@ -34,7 +36,8 @@ export const projects: Project[] = [
   {
     slug: "lofy",
     name: "Lofy – Gestion d’élevage canin",
-    badge: "Web app",
+    badge: "Production",
+    tags: ["Web app"],
     icon: "/projects/lofy.png",
     headline:
       "Une web app métier pour piloter son élevage canin : chiens, saillies, portées et rappels, avec une logique de données partagée avec BoB.",
@@ -54,6 +57,7 @@ export const projects: Project[] = [
     slug: "wow100",
     name: "WoW100% – Companion de collection WoW",
     badge: "Production",
+    tags: ["Mobile", "Web app"],
     icon: "/projects/wow100.jpg",
     headline:
       "Une app mobile et web pour suivre sa progression World of Warcraft : montures, mascottes, hauts-faits et objectifs par extension.",
@@ -75,6 +79,7 @@ export const projects: Project[] = [
     slug: "tempo",
     name: "Tempo - Gestion des plages horaires de travail",
     badge: "Production",
+    tags: ["Mobile"],
     icon: "/projects/tempo.png",
     headline:
       "Une app mobile pour suivre ses horaires de travail et ses plages planifiées avec une vision claire des totaux hebdo et mensuels.",
@@ -94,7 +99,8 @@ export const projects: Project[] = [
   {
     slug: "weekendly",
     name: "WeekEndly",
-    badge: "Full-stack",
+    badge: "Dev",
+    tags: ["Web app"],
     icon: "/projects/weekendly.png",
     headline:
       "Un tableau météo orienté décision pour planifier les sorties du week-end (créneaux, lisibilité mobile, UX).",
@@ -115,6 +121,7 @@ export const projects: Project[] = [
     slug: "bootcamp",
     name: "Bootcamp – MyMoviz / Yams",
     badge: "Bootcamp",
+    tags: ["Dev"],
     icon: "/projects/la-capsule.png",
     headline:
       "Des mini-apps pour valider React (state, events, composants) + tests et rigueur front.",
