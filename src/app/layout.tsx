@@ -2,11 +2,25 @@ import type { Metadata } from "next";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "./globals.css";
-import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Letty / Portfolio",
   description: "Full-stack developer & product builder.",
+  icons: {
+    icon: [
+      {
+        url: "/icone.png",
+        type: "image/png",
+      },
+    ],
+    shortcut: "/icone.png",
+    apple: [
+      {
+        url: "/icone.png",
+        type: "image/png",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
