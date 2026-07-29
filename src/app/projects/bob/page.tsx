@@ -82,6 +82,15 @@ export default function BobCaseStudy() {
               />
             </a>
 
+            <a
+              href="https://bobexpo.fr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex h-[42px] items-center gap-3 rounded-xl bg-white/10 px-4 text-sm text-white backdrop-blur transition hover:scale-105 hover:bg-white/20"
+            >
+              <span className="font-medium">Web App</span>
+            </a>
+
           </div>
 
         </div>

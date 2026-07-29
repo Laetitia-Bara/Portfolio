@@ -16,7 +16,7 @@ export const projects: Project[] = [
     slug: "bob",
     name: "BoB – Carnet d’Expos Canines",
     badge: "Production",
-    tags: ["Mobile"],
+    tags: ["Mobile", "Web app"],
     icon: "/projects/bob.png",
     headline:
       "Une app mobile pour suivre ses chiens, expos, résultats et titres, avec un historique fiable et partageable.",
@@ -30,6 +30,7 @@ export const projects: Project[] = [
       { label: "Case study", href: "/projects/bob" },
       { label: "App Store", href: "https://apps.apple.com/fr/app/bob-carnet-dexpos-canines/id6749371300" },
       { label: "Google Play", href: "https://play.google.com/store/apps/details?id=fr.cosmoslty.bob" },
+      { variant: "webapp", href: "https://bobexpo.fr" },
     ],
   },
 
