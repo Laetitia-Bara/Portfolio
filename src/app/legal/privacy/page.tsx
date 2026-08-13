@@ -14,6 +14,9 @@ export default function PrivacyPage() {
             privée de ses utilisateurs. Cette politique explique quelles données
             sont collectées, pourquoi, et comment elles sont utilisées.
           </p>
+          <p className="mt-3 text-sm text-zinc-500">
+            Dernière mise à jour : 13 août 2026
+          </p>
 
           {/* 1 INTRO */}
           <section className="mt-10 space-y-4">
@@ -35,6 +38,12 @@ export default function PrivacyPage() {
               <li>Adresse e-mail (authentification)</li>
               <li>Pseudo / nom d’utilisateur</li>
               <li>Données liées aux chiens (nom, pedigree, résultats, photos)</li>
+              <li>Résultats et informations liés aux expositions canines</li>
+              <li>
+                Photos et, pour les comptes Premium, documents ajoutés à une
+                exposition : feuilles de jugement, cartons de récompense,
+                coupes, flots, diplômes, PDF ou autres souvenirs
+              </li>
             </ul>
 
             <p className="text-zinc-500 italic">
@@ -57,6 +66,14 @@ export default function PrivacyPage() {
             <ul className="list-disc pl-6 text-zinc-400 space-y-1">
               <li>Permettre la connexion utilisateur</li>
               <li>Sauvegarder les données chiens et expositions</li>
+              <li>
+                Conserver dans un espace privé les documents et souvenirs
+                d’exposition ajoutés par les membres Premium
+              </li>
+              <li>
+                Permettre à l’utilisateur de choisir les éléments qu’il
+                souhaite partager
+              </li>
               <li>Améliorer l’application</li>
               <li>Afficher des publicités (version gratuite uniquement)</li>
             </ul>
@@ -67,11 +84,26 @@ export default function PrivacyPage() {
             <h2 className="text-2xl font-semibold">4. Stockage des données</h2>
             <p className="text-zinc-400">Les données sont stockées via :</p>
             <ul className="list-disc pl-6 text-zinc-400 space-y-1">
-              <li>Firebase (Google Cloud)</li>
-              <li>Cloudinary (stockage d’images)</li>
+              <li>
+                Firebase et Google Cloud, notamment Firebase Authentication,
+                Cloud Firestore et Cloud Storage pour les documents Premium
+              </li>
+              <li>Cloudinary pour certaines images et cartes de partage</li>
             </ul>
+            <p className="text-zinc-400">
+              Les documents Premium sont stockés dans le bucket Google Cloud
+              Storage configuré pour le projet BoB, situé aux États-Unis dans
+              la région <strong>us-central1</strong>. Ce stockage peut donc
+              entraîner un transfert ou un accès à des données en dehors de
+              l’Espace économique européen. Les traitements techniques
+              complémentaires peuvent également avoir lieu dans d’autres
+              régions selon les services utilisés par ces prestataires, dans le
+              respect des mécanismes et garanties applicables au titre du RGPD.
+            </p>
             <p className="text-zinc-500 italic">
-              Ces services appliquent leurs propres standards de sécurité.
+              L’accès aux documents est limité aux utilisateurs autorisés par
+              les règles de sécurité Firebase. Les fournisseurs appliquent
+              leurs propres mesures de sécurité et conditions de traitement.
             </p>
           </section>
 
@@ -86,7 +118,16 @@ export default function PrivacyPage() {
               <li>Google Firebase</li>
               <li>Google Mobile Ads (si publicité active)</li>
               <li>Cloudinary (stockage images)</li>
+              <li>
+                Les services de partage choisis par l’utilisateur, notamment
+                Facebook, uniquement lorsqu’il demande un partage
+              </li>
             </ul>
+            <p className="text-zinc-400">
+              Les documents d’exposition sont privés par défaut. Leur partage
+              n’est pas automatique : l’utilisateur sélectionne lui-même les
+              éléments qu’il souhaite envoyer ou publier.
+            </p>
           </section>
 
           {/* 6 CONSERVATION */}
@@ -94,8 +135,17 @@ export default function PrivacyPage() {
             <h2 className="text-2xl font-semibold">6. Conservation des données</h2>
             <ul className="list-disc pl-6 text-zinc-400 space-y-1">
               <li>Tant que le compte utilisateur existe</li>
+              <li>
+                Les documents d’une exposition sont supprimés lorsque
+                l’exposition est supprimée
+              </li>
               <li>Supprimées si le compte est supprimé (sauf obligations légales)</li>
             </ul>
+            <p className="text-zinc-400">
+              Les fichiers peuvent subsister temporairement dans les sauvegardes
+              techniques des prestataires, selon leurs propres délais de
+              conservation et de suppression.
+            </p>
           </section>
 
           {/* 7 DROITS */}
