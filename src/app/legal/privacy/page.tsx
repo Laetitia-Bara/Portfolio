@@ -15,7 +15,7 @@ export default function PrivacyPage() {
             sont collectées, pourquoi, et comment elles sont utilisées.
           </p>
           <p className="mt-3 text-sm text-zinc-500">
-            Dernière mise à jour : 13 août 2026
+            Dernière mise à jour : 9 octobre 2026
           </p>
 
           {/* 1 INTRO */}
@@ -55,9 +55,29 @@ export default function PrivacyPage() {
             </h3>
             <ul className="list-disc pl-6 text-zinc-400 space-y-1">
               <li>Identifiants techniques (Firebase ID)</li>
-              <li>Données d’usage anonymisées (crash, performance)</li>
+              <li>Données techniques et de diagnostic (crash, performance)</li>
+              <li>
+                Si vous l’acceptez sur BoB Web : données de mesure d’audience
+                collectées par Firebase Analytics, comme les écrans consultés,
+                les événements de session et des informations techniques de
+                navigateur ou d’appareil. Un identifiant technique propre à
+                Analytics peut être associé à ces événements.
+              </li>
               <li>Données publicitaires (si publicité affichée)</li>
             </ul>
+
+            <h3 className="text-lg font-medium mt-6">
+              📌 Localisation pour la météo locale (facultative)
+            </h3>
+            <p className="text-zinc-400">
+              Si vous activez la météo locale, BoB utilise la position de votre
+              appareil lorsque vous utilisez l’application. Avant tout envoi,
+              les coordonnées sont arrondies à un chiffre après la virgule afin
+              de ne transmettre qu’une zone approximative. Cette zone est
+              envoyée au service Firebase de BoB, qui la transmet à WeatherAPI.com
+              pour obtenir la météo locale et adapter le visuel de la mascotte.
+              BoB ne suit pas votre position en arrière-plan.
+            </p>
           </section>
 
           {/* 3 UTILISATION */}
@@ -75,6 +95,15 @@ export default function PrivacyPage() {
                 souhaite partager
               </li>
               <li>Améliorer l’application</li>
+              <li>
+                Fournir la météo locale et adapter le visuel de la mascotte,
+                uniquement si vous activez cette fonction
+              </li>
+              <li>
+                Mesurer la fréquentation et l’utilisation de BoB Web, et
+                améliorer son fonctionnement et son ergonomie, avec Firebase
+                Analytics uniquement après votre consentement
+              </li>
               <li>Afficher des publicités (version gratuite uniquement)</li>
             </ul>
           </section>
@@ -86,7 +115,9 @@ export default function PrivacyPage() {
             <ul className="list-disc pl-6 text-zinc-400 space-y-1">
               <li>
                 Firebase et Google Cloud, notamment Firebase Authentication,
-                Cloud Firestore et Cloud Storage pour les documents Premium
+                Cloud Firestore, Cloud Functions pour fournir la météo locale,
+                Cloud Storage pour les documents Premium et Firebase Analytics
+                pour la mesure d’audience facultative de BoB Web
               </li>
               <li>Cloudinary pour certaines images et cartes de partage</li>
             </ul>
@@ -116,6 +147,12 @@ export default function PrivacyPage() {
             <p className="text-zinc-400">Certaines données peuvent être traitées par :</p>
             <ul className="list-disc pl-6 text-zinc-400 space-y-1">
               <li>Google Firebase</li>
+              <li>
+                WeatherAPI.com, uniquement lorsque la météo locale est activée,
+                pour obtenir les conditions météo à partir de la zone
+                approximative transmise par BoB
+              </li>
+              <li>Google Analytics via Firebase, lorsque vous l’autorisez sur BoB Web</li>
               <li>Google Mobile Ads (si publicité active)</li>
               <li>Cloudinary (stockage images)</li>
               <li>
@@ -146,6 +183,30 @@ export default function PrivacyPage() {
               techniques des prestataires, selon leurs propres délais de
               conservation et de suppression.
             </p>
+            <p className="text-zinc-400">
+              Les données de mesure Firebase Analytics sont conservées selon
+              la durée définie dans les paramètres de conservation de la
+              propriété Google Analytics associée à BoB.
+            </p>
+            <p className="text-zinc-400">
+              Pour la météo locale, BoB met en cache sur votre appareil ou dans
+              votre navigateur la zone arrondie et la réponse météo, avec une
+              durée de validité de 50 minutes. À l’expiration, le cache est
+              écarté et supprimé lors de sa prochaine vérification ; la
+              désactivation de la météo le supprime immédiatement. La position
+              n’est pas ajoutée à votre profil BoB ni enregistrée dans
+              Firestore. Les traitements et durées de conservation propres à
+              WeatherAPI.com relèvent de sa{' '}
+              <a
+                className="underline underline-offset-4 hover:text-white"
+                href="https://www.weatherapi.com/privacy.aspx"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                politique de confidentialité
+              </a>
+              .
+            </p>
           </section>
 
           {/* 7 DROITS */}
@@ -173,17 +234,72 @@ export default function PrivacyPage() {
             </p>
           </section>
 
-          {/* 9 MODIFS */}
+          {/* 9 ANALYTICS */}
           <section className="mt-10 space-y-4">
-            <h2 className="text-2xl font-semibold">9. Modifications</h2>
+            <h2 className="text-2xl font-semibold">
+              9. Mesure d’audience et consentement Analytics
+            </h2>
+            <p className="text-zinc-400">
+              Dans l’application BoB Web, Firebase Analytics (service de
+              Google) peut mesurer l’utilisation de l’application : écrans
+              consultés, événements de session et données techniques associées
+              (par exemple le navigateur, l’appareil et un identifiant technique
+              d’Analytics). Ces informations servent à comprendre la
+              fréquentation, repérer les difficultés et améliorer le
+              fonctionnement et l’ergonomie de BoB. Elles ne sont pas
+              nécessaires au fonctionnement de BoB.
+            </p>
+            <p className="text-zinc-400">
+              La collecte Analytics est désactivée tant que vous ne l’avez pas
+              acceptée. Votre refus ne limite pas l’accès à BoB. Vous pouvez
+              modifier ou retirer votre choix à tout moment dans BoB Web, via
+              « Autre » puis « Confidentialité Analytics ». Votre choix est
+              mémorisé dans le navigateur. Le retrait arrête les collectes
+              futures depuis BoB Web, mais ne supprime pas automatiquement les
+              données déjà transmises à Google.
+            </p>
+            <p className="text-zinc-400">
+              BoB ne revendique pas d’exemption de consentement pour cette
+              mesure d’audience. La CNIL réserve cette exemption aux
+              configurations qui remplissent des conditions strictes, notamment
+              une finalité limitée à la mesure d’audience pour le compte de
+              l’éditeur et la production de statistiques anonymes.{' '}
+              <a
+                className="underline underline-offset-4 hover:text-white"
+                href="https://www.cnil.fr/fr/cookies-solutions-pour-les-outils-de-mesure-daudience"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Voir les recommandations de la CNIL
+              </a>
+              .
+            </p>
+            <p className="text-zinc-500">
+              Google fournit des informations complémentaires sur le traitement
+              des données par Firebase dans sa{' '}
+              <a
+                className="underline underline-offset-4 hover:text-white"
+                href="https://firebase.google.com/support/privacy"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                documentation relative à la confidentialité Firebase
+              </a>
+              .
+            </p>
+          </section>
+
+          {/* 10 MODIFS */}
+          <section className="mt-10 space-y-4">
+            <h2 className="text-2xl font-semibold">10. Modifications</h2>
             <p className="text-zinc-400">
               Cette politique peut être mise à jour à tout moment.
             </p>
           </section>
 
-          {/* 10 CONTACT */}
+          {/* 11 CONTACT */}
           <section className="mt-10 space-y-4">
-            <h2 className="text-2xl font-semibold">10. Contact</h2>
+            <h2 className="text-2xl font-semibold">11. Contact</h2>
             <p className="text-zinc-400">
               📧 bob@cosmos-lty.fr
             </p>
