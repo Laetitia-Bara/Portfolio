@@ -4,6 +4,7 @@
 
 :root {
     color-scheme: dark;
+    background-color: #171020;
 }
 
 :where(a, button):focus-visible {
