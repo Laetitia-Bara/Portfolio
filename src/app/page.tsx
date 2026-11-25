@@ -183,8 +183,8 @@ export default function HomePage() {
       <Section id="contact" title="Contact">
         <div className="rounded-2xl border border-white/15 bg-black/25 p-5 sm:p-6">
           <p className="max-w-2xl text-sm leading-relaxed text-zinc-200">
-            Je recherche un poste de développeuse web, mobile ou backend en CDI, CDD ou alternance.
-            Je suis également ouverte aux missions de développement web et mobile.
+            Je recherche un poste de développeuse web, mobile ou métier en CDI.
+            Je suis également ouverte aux missions de développement web et mobile en freelance .
           </p>
           <a
             className="mt-3 inline-block break-all rounded-sm font-medium underline decoration-white/40 underline-offset-4 hover:decoration-white/80"
