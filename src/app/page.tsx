@@ -7,11 +7,15 @@ import Section from "../components/Section";
 import SocialIcon from "../components/SocialLinks";
 import { projects } from "../data/projects";
 
+const description =
+  "Laëtitia Bara, développeuse d’applications web, mobiles et métier. Applications en production, compétences et études de cas.";
+
 export const metadata: Metadata = {
+  description,
   alternates: { canonical: "/" },
   openGraph: {
     title: "Laëtitia Bara | Cosmos-Lty",
-    description: "Applications web et mobiles publiées et études de cas en Flutter, Next.js et Java Spring Boot.",
+    description,
     url: "/",
     siteName: "Cosmos-Lty",
     locale: "fr_FR",
@@ -20,36 +24,34 @@ export const metadata: Metadata = {
 };
 
 const featuredProjects = projects.filter((project) => project.visibility === "featured");
+const panel = "min-w-0 rounded-2xl border border-white/15 bg-zinc-950/60 p-4 sm:p-5";
+const projectLink =
+  "rounded-sm font-medium text-cyan-100 underline decoration-cyan-200/50 underline-offset-4 hover:decoration-cyan-100";
 
 export default function HomePage() {
   return (
     <>
-      <section className="py-12 sm:py-16">
+      <section aria-labelledby="profile-title" className="pt-12 sm:pt-16">
         <Container>
-          <div className="max-w-2xl">
-            <p className="text-sm font-medium text-zinc-300">Développeuse full-stack web, mobile et backend</p>
-            <h1 className="unicorn-text mt-3 text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
+          <div className="max-w-3xl">
+            <p className="text-sm font-medium text-zinc-300">
+              Développeuse d’applications · Web, mobile et métier
+            </p>
+            <h1 id="profile-title" className="unicorn-text mt-3 text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
               Laëtitia Bara
             </h1>
-            <p className="mt-4 max-w-xl text-base leading-relaxed text-zinc-200 sm:text-lg">
-              Je conçois, développe et maintiens des applications métier. J’ai créé BoB, un carnet
-              d’expositions canines disponible sur le Web, Android et iOS.
+            <p className="mt-4 text-base leading-relaxed text-zinc-200 sm:text-lg">
+              Passionnée par les langages de programmation depuis plus de vingt ans, je développe et
+              maintiens plusieurs applications en production, dont{" "}
+              <Link href="/projects/bob" className={projectLink}>BoB</Link>, disponible sur le Web,
+              Android et iOS.
             </p>
-
-            <dl className="mt-6 grid gap-4 rounded-2xl border border-white/15 bg-black/25 p-4 sm:grid-cols-2">
-              <div>
-                <dt className="text-sm font-semibold">Web et mobile</dt>
-                <dd className="mt-1 text-sm leading-relaxed text-zinc-300">
-                  React, TypeScript, Next.js, Flutter, Dart et Firebase
-                </dd>
-              </div>
-              <div>
-                <dt className="text-sm font-semibold">Backend et applications métier</dt>
-                <dd className="mt-1 text-sm leading-relaxed text-zinc-300">
-                  Java, Spring Boot, Python, SQL et PostgreSQL. API REST, logique métier et tests.
-                </dd>
-              </div>
-            </dl>
+            <p className="mt-3 text-base leading-relaxed text-zinc-300">
+              Mon expérience en gestion de projet, réseaux et support informatique m’aide à prendre
+              en charge leur cycle de vie, des choix d’architecture à la mise en production, puis à
+              la maintenance et aux évolutions. Je travaille par itérations, dans une démarche agile
+              inspirée de Scrum.
+            </p>
 
             <div className="mt-6 flex flex-wrap gap-3">
               <a
@@ -68,6 +70,89 @@ export default function HomePage() {
           </div>
         </Container>
       </section>
+
+      <Section id="competences" title="Compétences">
+        <div className="grid gap-4 md:grid-cols-2">
+          <section aria-labelledby="frontend-title" className={panel}>
+            <h3 id="frontend-title" className="text-lg font-semibold">Front-end</h3>
+            <dl className="mt-3 grid gap-3 text-sm leading-relaxed text-zinc-300">
+              <div>
+                <dt className="font-semibold text-zinc-100">Web</dt>
+                <dd>
+                  HTML, CSS, Tailwind CSS, JavaScript, TypeScript, React, Next.js et Vue 3
+                  (socle en développement de{" "}
+                  <Link href="/projects#nextstep" className={projectLink}>NextStep</Link>).
+                </dd>
+              </div>
+              <div>
+                <dt className="font-semibold text-zinc-100">Mobile</dt>
+                <dd>Dart / Flutter et React Native / Expo (LevelUp et BIS, en développement).</dd>
+              </div>
+              <div>
+                <dt className="font-semibold text-zinc-100">Interfaces métier</dt>
+                <dd>
+                  Formulaires, tableaux de bord et outils de gestion. React et TypeScript dans{" "}
+                  <Link href="/projects/ablette" className={projectLink}>Ablette</Link>, avec Angular
+                  prévu pour la suite. NiceGUI dans{" "}
+                  <Link href="/projects#roland-roro" className={projectLink}>Roro</Link>.
+                </dd>
+              </div>
+            </dl>
+          </section>
+
+          <section aria-labelledby="backend-title" className={panel}>
+            <h3 id="backend-title" className="text-lg font-semibold">Backend</h3>
+            <dl className="mt-3 grid gap-3 text-sm leading-relaxed text-zinc-300">
+              <div>
+                <dt className="font-semibold text-zinc-100">Serveur et API</dt>
+                <dd>
+                  Java / Spring Boot, PHP / Symfony (API de{" "}
+                  <Link href="/projects#nextstep" className={projectLink}>NextStep</Link>),
+                  Python, Node.js / Express et API REST.
+                </dd>
+              </div>
+              <div>
+                <dt className="font-semibold text-zinc-100">Données et authentification</dt>
+                <dd>SQL, PostgreSQL, SQLite, Firebase Auth et Cloud Firestore.</dd>
+              </div>
+              <div>
+                <dt className="font-semibold text-zinc-100">Logique métier</dt>
+                <dd>Modélisation des données, règles de gestion, validation, migrations et tests.</dd>
+              </div>
+            </dl>
+          </section>
+        </div>
+
+        <section aria-labelledby="delivery-title" className={`mt-4 ${panel}`}>
+          <h3 id="delivery-title" className="text-lg font-semibold">Livraison et suivi de projet</h3>
+          <dl className="mt-3 grid gap-3 text-sm leading-relaxed text-zinc-300 md:grid-cols-3 md:gap-5">
+            <div>
+              <dt className="font-semibold text-zinc-100">Versionnement et environnement</dt>
+              <dd>Git, GitHub et Docker Compose.</dd>
+            </div>
+            <div>
+              <dt className="font-semibold text-zinc-100">Tests et déploiement</dt>
+              <dd>
+                GitHub Actions pour l’intégration continue, Vercel pour le déploiement web, Google Play
+                et App Store pour la publication mobile.
+              </dd>
+            </div>
+            <div>
+              <dt className="font-semibold text-zinc-100">Suivi de projet</dt>
+              <dd>Jira, priorisation des tickets et suivi des demandes d’évolution.</dd>
+            </div>
+          </dl>
+        </section>
+
+        <section aria-labelledby="training-title" className={`mt-4 ${panel}`}>
+          <h3 id="training-title" className="text-lg font-semibold">Certifications et formation</h3>
+          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-zinc-300">
+            Je prépare une certification Java et je poursuis ma formation en SQL et PHP avec des
+            objectifs de certification. J’applique ces apprentissages dans Ablette et NextStep.
+            Kubernetes fait aussi partie de mon parcours de formation.
+          </p>
+        </section>
+      </Section>
 
       <Section id="projects" title="Projets">
         <ProjectGrid projects={featuredProjects} />

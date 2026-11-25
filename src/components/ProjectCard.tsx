@@ -22,7 +22,8 @@ export default function ProjectCard({ project }: { project: Project }) {
 
   return (
     <article
-      className="card-theme relative isolate flex min-w-0 flex-col gap-3.5 rounded-2xl p-4 shadow-sm
+      id={project.slug}
+      className="card-theme relative isolate flex min-w-0 scroll-mt-32 flex-col gap-3.5 rounded-2xl p-4 shadow-sm sm:scroll-mt-24
         border border-[rgba(var(--card-border),0.18)] bg-[rgba(var(--card-bg),0.06)]
         transition-colors hover:border-cyan-200/50 hover:bg-[rgba(var(--card-bg),0.10)] focus-within:border-cyan-200/50"
     >
