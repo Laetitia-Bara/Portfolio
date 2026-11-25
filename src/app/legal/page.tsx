@@ -1,11 +1,18 @@
+import type { Metadata } from "next";
 import Container from "../../components/Container";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Mentions légales | Cosmos-Lty",
+  description: "Politique de confidentialité et conditions d’utilisation et de vente de BoB.",
+  alternates: { canonical: "/legal" },
+};
 
 export default function LegalHub() {
   return (
     <section className="py-12">
       <Container>
-        <h1 className="text-3xl font-semibold tracking-tight">Legal</h1>
+        <h1 className="text-3xl font-semibold tracking-tight">Mentions légales</h1>
         <p className="mt-3 max-w-2xl text-zinc-300">
           Documents légaux liés à BoB (et au site).
         </p>

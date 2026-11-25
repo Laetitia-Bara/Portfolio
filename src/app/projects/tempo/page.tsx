@@ -1,13 +1,19 @@
+import type { Metadata } from "next";
 import Container from "../../../components/Container";
 import Image from "next/image";
 
+export const metadata: Metadata = {
+    title: "Tempo",
+    description: "Application Android et iOS pour planifier ses horaires de travail et suivre ses heures.",
+    alternates: { canonical: "/projects/tempo" },
+};
 
 export default function TempoCaseStudy() {
     return (
         <section className="py-12">
             <Container>
                 <div className="max-w-3xl">
-                    <p className="text-sm text-zinc-400">Case study</p>
+                    <p className="text-sm text-zinc-400">Étude de cas</p>
                     <h1 className="mt-2 text-3xl font-semibold tracking-tight">
                         Tempo — Planning de Travail Simplifié
                     </h1>
@@ -30,25 +36,26 @@ export default function TempoCaseStudy() {
                             <h2 className="text-base font-semibold">Solution</h2>
                             <p className="mt-2 text-sm text-zinc-300">
                                 Une application mobile centrée sur la lisibilité, avec vue calendrier, calcul
-                                automatique des heures, gestion des types de journées et base évolutive pour la
-                                synchronisation calendrier et les rappels.
+                                automatique des heures et gestion des types de journées.
                             </p>
                         </div>
                     </div>
 
                     <div className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-6">
-                        <h2 className="text-base font-semibold">Stack</h2>
+                        <h2 className="text-base font-semibold">Technologies</h2>
                         <p className="mt-2 text-sm text-zinc-300">
-                            Flutter • Firebase Auth • Firestore • Google Calendar / calendrier iOS (sync prévue)
-                            • Google Mobile Ads
+                            Dart · Flutter · Firebase Auth · Cloud Firestore · AdMob
                         </p>
 
-                        <h2 className="mt-6 text-base font-semibold">Highlights</h2>
+                        <h2 className="mt-6 text-base font-semibold">Fonctionnalités</h2>
                         <ul className="mt-2 space-y-2 text-sm text-zinc-300">
                             <li>• Vue mensuelle claire avec visualisation rapide des créneaux horaires</li>
                             <li>• Calcul automatique des heures mensuelles vs objectif contractuel</li>
                             <li>• Gestion métier des congés payés, jours fériés et cas spécifiques comme le 1er mai</li>
                         </ul>
+                        <p className="mt-4 text-sm text-zinc-300">
+                            La synchronisation avec Google Agenda et le calendrier iOS est envisagée.
+                        </p>
                     </div>
 
                     <div className="mt-6 flex flex-wrap items-center gap-4">
@@ -62,7 +69,7 @@ export default function TempoCaseStudy() {
                         >
                             <Image
                                 src="/stores/apple.png"
-                                alt="Download on the App Store"
+                                alt="Télécharger Tempo sur l’App Store"
                                 width={140}
                                 height={42}
                                 className="h-[42px] w-auto"
@@ -78,7 +85,7 @@ export default function TempoCaseStudy() {
                         >
                             <Image
                                 src="/stores/google.png"
-                                alt="Get it on Google Play"
+                                alt="Télécharger Tempo sur Google Play"
                                 width={160}
                                 height={48}
                                 className="h-[42px] w-auto"

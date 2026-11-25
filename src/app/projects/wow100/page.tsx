@@ -1,14 +1,21 @@
+import type { Metadata } from "next";
 import Container from "../../../components/Container";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "WoW100%",
+  description: "Suivi des collections World of Warcraft sur le Web, Android et iOS.",
+  alternates: { canonical: "/projects/wow100" },
+};
 
 export default function Wow100CaseStudy() {
   return (
     <section className="py-12">
       <Container>
         <div className="max-w-3xl">
-          <p className="text-sm text-zinc-400">Case study</p>
+          <p className="text-sm text-zinc-400">Étude de cas</p>
           <h1 className="mt-2 text-3xl font-semibold tracking-tight">
-            WoW100% — Companion de collection World of Warcraft
+            WoW100% — Suivi des collections de World of Warcraft
           </h1>
           <p className="mt-4 text-zinc-300 leading-relaxed">
             WoW100% accompagne les collectionneurs World of Warcraft dans le suivi de leur
@@ -20,7 +27,7 @@ export default function Wow100CaseStudy() {
             <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
               <h2 className="text-base font-semibold">Problème</h2>
               <p className="mt-2 text-sm text-zinc-300">
-                Les collections WoW sont dispersées entre montures, mascottes, hauts-faits et
+                Les collections WoW sont dispersées entre montures, mascottes, hauts faits et
                 extensions. Il devient difficile de savoir rapidement où l’on en est et quels
                 objectifs prioriser pour avancer vers le 100%.
               </p>
@@ -37,29 +44,29 @@ export default function Wow100CaseStudy() {
           </div>
 
           <div className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-6">
-            <h2 className="text-base font-semibold">Stack</h2>
+            <h2 className="text-base font-semibold">Technologies</h2>
             <p className="mt-2 text-sm text-zinc-300">
-              Flutter • Battle.net OAuth • Battle.net API • App Store • Google Play • Web App
+              Dart · Flutter · Firebase Auth · Cloud Firestore · API et OAuth Battle.net · AdMob
             </p>
 
-            <h2 className="mt-6 text-base font-semibold">Highlights</h2>
+            <h2 className="mt-6 text-base font-semibold">Fonctionnalités</h2>
             <ul className="mt-2 space-y-2 text-sm text-zinc-300">
               <li>• Connexion au compte Battle.net et sélection du personnage principal</li>
               <li>• Progression globale et détail par extension</li>
-              <li>• Suivi des montures, mascottes, hauts-faits et objectifs manquants</li>
+              <li>• Suivi des montures, mascottes, hauts faits et objectifs manquants</li>
             </ul>
           </div>
 
           <div className="mt-6 flex flex-wrap items-center gap-4">
             <a
-              href="https://apps.apple.com/fr/app/wow100/id6778885180?uo=4"
+              href="https://apps.apple.com/fr/app/wow100-tracker-de-collection/id6778885180"
               target="_blank"
               rel="noopener noreferrer"
               className="store-badge rounded-xl overflow-hidden transition hover:scale-105"
             >
               <Image
                 src="/stores/apple.png"
-                alt="Download on the App Store"
+                alt="Télécharger WoW100% sur l’App Store"
                 width={140}
                 height={42}
                 className="h-[42px] w-auto"
@@ -74,7 +81,7 @@ export default function Wow100CaseStudy() {
             >
               <Image
                 src="/stores/google.png"
-                alt="Get it on Google Play"
+                alt="Télécharger WoW100% sur Google Play"
                 width={160}
                 height={48}
                 className="h-[42px] w-auto"
@@ -87,7 +94,7 @@ export default function Wow100CaseStudy() {
               rel="noopener noreferrer"
               className="flex h-[42px] items-center gap-3 rounded-xl bg-white/10 px-4 text-sm text-white backdrop-blur transition hover:scale-105 hover:bg-white/20"
             >
-              <span className="font-medium">Web App</span>
+              <span className="font-medium">Application Web</span>
             </a>
           </div>
         </div>

@@ -1,84 +1,66 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import Container from "../components/Container";
+import ProjectGrid from "../components/ProjectGrid";
 import Section from "../components/Section";
-import ProjectCard from "../components/ProjectCard";
 import SocialIcon from "../components/SocialLinks";
 import { projects } from "../data/projects";
-import {
-  FaGithub,
-  FaLinkedin,
-  FaFacebook,
-  FaInstagram,
-  FaTiktok,
-  FaYoutube,
-  FaDiscord,
-  FaSteam,
-} from "react-icons/fa";
-import { SiX, SiBattledotnet } from "react-icons/si";
 
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: "Laëtitia Bara | Cosmos-Lty",
+    description: "Applications web et mobiles publiées et études de cas en Flutter, Next.js et Java Spring Boot.",
+    url: "/",
+    siteName: "Cosmos-Lty",
+    locale: "fr_FR",
+    type: "website",
+  },
+};
+
+const featuredProjects = projects.filter((project) => project.visibility === "featured");
 
 export default function HomePage() {
   return (
     <>
-      <section className="py-16">
+      <section className="py-12 sm:py-16">
         <Container>
           <div className="max-w-2xl">
-            <p className="text-sm text-zinc-400">Full-stack developer • Product builder</p>
-            <h1 className="unicorn-text mt-3 text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
-              Letty 🦄
+            <p className="text-sm font-medium text-zinc-300">Développeuse full-stack web, mobile et backend</p>
+            <h1 className="unicorn-text mt-3 text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
+              Laëtitia Bara
             </h1>
-
-            <p className="mt-4 text-lg text-zinc-300">
-              Je développe des apps utiles, de l’idée à la prod.
+            <p className="mt-4 max-w-xl text-base leading-relaxed text-zinc-200 sm:text-lg">
+              Je conçois, développe et maintiens des applications métier. J’ai créé BoB, un carnet
+              d’expositions canines disponible sur le Web, Android et iOS.
             </p>
 
-            <p className="mt-4 text-base leading-relaxed text-zinc-300">
-              Je développe des produits complets (front, back, déploiement), avec un focus UX et
-              fiabilité. Créatrice de BoB, une app mobile dédiée au suivi d’expositions canines.
-            </p>
-
-
-
-            {/* ✅ Dispo (Alternance / CDI-CDD / Missions) */}
-            <div className="mt-6 flex flex-wrap items-center gap-3">
-              <a
-                href="#contact-alternance"
-                className="inline-flex items-center gap-2 rounded-full border border-emerald-400/25 bg-emerald-400/10 px-3 py-1 text-xs text-zinc-100 backdrop-blur hover:bg-emerald-400/15"
-              >
-                <span className="h-2 w-2 rounded-full bg-emerald-400" />
-                <span className="font-semibold">Recherche Alternance</span>
-                <span className="text-zinc-300/90">/ 1 an • Full-Stack</span>
-              </a>
-
-              <a
-                href="#contact-cdi-cdd"
-                className="inline-flex items-center gap-2 rounded-full border border-sky-400/30 bg-sky-400/10 px-3 py-1 text-xs text-zinc-100 backdrop-blur hover:bg-sky-400/15"
-              >
-                <span className="h-2 w-2 rounded-full bg-sky-400" />
-                <span className="font-semibold">Recherche CDI/CDD</span>
-                <span className="text-zinc-300/90">/ Dev</span>
-              </a>
-
-              <a
-                href="#contact-mission"
-                className="inline-flex items-center gap-2 rounded-full border border-fuchsia-400/25 bg-fuchsia-400/10 px-3 py-1 text-xs text-zinc-100 backdrop-blur hover:bg-fuchsia-400/15"
-              >
-                <span className="h-2 w-2 rounded-full bg-fuchsia-400" />
-                <span className="font-semibold">Missions</span>
-                <span className="text-zinc-300/90">/ Dev web • mobile</span>
-              </a>
-            </div>
-
+            <dl className="mt-6 grid gap-4 rounded-2xl border border-white/15 bg-black/25 p-4 sm:grid-cols-2">
+              <div>
+                <dt className="text-sm font-semibold">Web et mobile</dt>
+                <dd className="mt-1 text-sm leading-relaxed text-zinc-300">
+                  React, TypeScript, Next.js, Flutter, Dart et Firebase
+                </dd>
+              </div>
+              <div>
+                <dt className="text-sm font-semibold">Backend et applications métier</dt>
+                <dd className="mt-1 text-sm leading-relaxed text-zinc-300">
+                  Java, Spring Boot, Python, SQL et PostgreSQL. API REST, logique métier et tests.
+                </dd>
+              </div>
+            </dl>
 
             <div className="mt-6 flex flex-wrap gap-3">
               <a
                 href="#projects"
-                className="rounded-xl bg-white/10 px-4 py-2 text-sm font-medium text-zinc-100 ring-1 ring-white/10 hover:bg-white/15"
+                className="rounded-xl bg-white/15 px-4 py-2 text-sm font-semibold ring-1 ring-white/20 hover:bg-white/20"
               >
                 Voir mes projets
               </a>
               <a
                 href="#contact"
-                className="rounded-xl px-4 py-2 text-sm font-medium text-zinc-200 ring-1 ring-white/10 hover:bg-white/5"
+                className="rounded-xl px-4 py-2 text-sm font-medium text-zinc-200 ring-1 ring-white/20 hover:bg-white/10"
               >
                 Me contacter
               </a>
@@ -87,102 +69,34 @@ export default function HomePage() {
         </Container>
       </section>
 
-      <Section
-        title="Projets"
-        subtitle="Mes projets qui montrent du concret : produit en production, full-stack, mobile et web..."
-      >
-        <div id="projects" className="grid gap-4 md:grid-cols-3">
-          {projects.map((p) => (
-            <ProjectCard key={p.slug} project={p} />
-          ))}
-        </div>
-
-        <div className="mt-4">
-          <p className="text-sm text-zinc-400">
-            Si mes projets te plaisent 👉{" "}
-            <a
-              href="https://ko-fi.com/cosmoslty"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-zinc-200 underline decoration-white/20 underline-offset-4 hover:text-white hover:decoration-white/60"
-            >
-              Tu peux m&apos;offrir un café ☕
-            </a>
-          </p>
-        </div>
+      <Section id="projects" title="Projets">
+        <ProjectGrid projects={featuredProjects} />
+        <Link
+          href="/projects"
+          className="mt-6 inline-flex rounded-xl bg-white/10 px-4 py-2 text-sm font-semibold ring-1 ring-white/20 hover:bg-white/15"
+        >
+          Voir les dix projets
+        </Link>
       </Section>
 
-      <Section title="Contact" >
-        <div id="contact" className="rounded-2xl border border-white/10 bg-white/5 p-6">
-          <div className="grid gap-4 md:grid-cols-3">
-            <div id="contact-alternance" className="scroll-mt-24 rounded-2xl border border-emerald-400/20 bg-emerald-400/5 p-4">
-              <p className="text-sm font-semibold text-zinc-100">🟢 Alternance (1 an)</p>
-              <p className="mt-1 text-sm text-zinc-300">
-                Recherche alternance 1 an — Full-Stack (La Capsule / formation DevOps).
-              </p>
-              <p className="mt-2 text-xs text-zinc-400">
-                Démarrage : ?? / <span className="text-zinc-300">2026</span> • Lieu : <span className="text-zinc-300">[France]</span>
-              </p>
-            </div>
-
-            <div id="contact-cdi-cdd" className="scroll-mt-24 rounded-2xl border border-sky-400/25 bg-sky-400/5 p-4">
-              <p className="text-sm font-semibold text-zinc-100">🔵 CDI / CDD</p>
-              <p className="mt-1 text-sm text-zinc-300">
-                Recherche CDI ou CDD en Développement Junior avec expérience complémentaire (Réseau, Gestion de Projet, Support, etc.).
-              </p>
-              <p className="mt-2 text-xs text-zinc-400">
-                Démarrage : <span className="text-zinc-300">Dès que possible</span> • Lieu : <span className="text-zinc-300">[Reims, Soissons, Château-Thierry] / [51, 02] / [France]</span>
-              </p>
-            </div>
-
-            <div id="contact-mission" className="scroll-mt-24 rounded-2xl border border-fuchsia-400/20 bg-fuchsia-400/5 p-4">
-              <p className="text-sm font-semibold text-zinc-100">🟣 Missions</p>
-              <p className="mt-1 text-sm text-zinc-300">
-                Ouverte aux missions de dev web / mobile (Flutter, React/Next, Node).
-              </p>
-              <p className="mt-2 text-xs text-zinc-400">
-                Remote • Durée : <span className="text-zinc-300">ponctuel ou récurrent</span>
-              </p>
-            </div>
-          </div>
-
-          <p className="text-sm text-zinc-300">
-            Le plus simple :{" "}
-            <a
-              className="underline decoration-white/20 underline-offset-4 hover:decoration-white/60"
-              href="mailto:contact@cosmos-lty.fr"
-            >
-              contact@cosmos-lty.fr
-            </a>
+      <Section id="contact" title="Contact">
+        <div className="rounded-2xl border border-white/15 bg-black/25 p-5 sm:p-6">
+          <p className="max-w-2xl text-sm leading-relaxed text-zinc-200">
+            Je recherche un poste de développeuse web, mobile ou backend en CDI, CDD ou alternance.
+            Je suis également ouverte aux missions de développement web et mobile.
           </p>
-
-          {/* Réseaux / icônes */}
-          <div className="mt-4 space-y-3">
-            {/* Ligne 1 */}
-            <div className="flex flex-wrap gap-3">
-              <SocialIcon href="https://www.linkedin.com/in/bara-laetitia" icon={<FaLinkedin size={18} />} label="LinkedIn" className="social-linkedin" />
-              <SocialIcon href="https://github.com/Laetitia-Bara" icon={<FaGithub size={18} />} label="GitHub" className="social-github" />
-            </div>
-            {/* Ligne 2 */}
-            <div className="flex flex-wrap gap-3">
-              <SocialIcon href="https://www.facebook.com/cosmos.lty" icon={<FaFacebook size={18} />} label="Facebook" />
-              <SocialIcon href="https://www.instagram.com/cosmos.lty/" icon={<FaInstagram size={18} />} label="Instagram" />
-              <SocialIcon href="https://www.tiktok.com/@cosmos.lty" icon={<FaTiktok size={18} />} label="TikTok" />
-              <SocialIcon href="https://www.youtube.com/@Cosmos-lty" icon={<FaYoutube size={18} />} label="YouTube" />
-              <SocialIcon href="https://x.com/Cosmos_lty" icon={<SiX size={16} />} label="X / Twitter" />
-            </div>
-
-            {/* Ligne 3 */}
-            <div className="flex flex-wrap gap-3">
-              <SocialIcon href="https://discord.com/" icon={<FaDiscord size={18} />} label="Discord (pseudo: letty_orcante)" />
-              <SocialIcon href="https://store.steampowered.com/?l=french" icon={<FaSteam size={18} />} label="Steam (pseudo: Orcante)" />
-              <SocialIcon href="https://us.shop.battle.net/fr-fr" icon={<SiBattledotnet size={18} />} label="Battle.net (pseudo: Alexiel)" />
-            </div>
+          <a
+            className="mt-3 inline-block break-all rounded-sm font-medium underline decoration-white/40 underline-offset-4 hover:decoration-white/80"
+            href="mailto:contact@cosmos-lty.fr"
+          >
+            contact@cosmos-lty.fr
+          </a>
+          <div className="mt-4 flex flex-wrap gap-3">
+            <SocialIcon href="https://www.linkedin.com/in/bara-laetitia" icon={<FaLinkedin size={18} />} label="LinkedIn" className="social-linkedin" />
+            <SocialIcon href="https://github.com/Laetitia-Bara" icon={<FaGithub size={18} />} label="GitHub" className="social-github" />
           </div>
         </div>
       </Section>
-
-
     </>
   );
 }

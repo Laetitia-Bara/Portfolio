@@ -1,34 +1,54 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useSyncExternalStore } from "react";
 
 type Theme = "pro" | "unicorn";
 
+const themeChangeEvent = "portfolio-theme-change";
+
+function subscribeToTheme(onChange: () => void) {
+  window.addEventListener(themeChangeEvent, onChange);
+  window.addEventListener("storage", onChange);
+  return () => {
+    window.removeEventListener(themeChangeEvent, onChange);
+    window.removeEventListener("storage", onChange);
+  };
+}
+
+function getTheme(): Theme {
+  return localStorage.getItem("theme") === "unicorn" ? "unicorn" : "pro";
+}
+
+function getServerTheme(): Theme {
+  return "pro";
+}
+
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState<Theme>("pro");
+  const theme = useSyncExternalStore(subscribeToTheme, getTheme, getServerTheme);
 
   useEffect(() => {
-    const saved = localStorage.getItem("theme") as Theme | null;
-    const current = saved ?? "pro";
-    setTheme(current);
-    document.body.dataset.theme = current;
-  }, []);
+    document.body.dataset.theme = theme;
+  }, [theme]);
 
   const toggle = () => {
     const next = theme === "pro" ? "unicorn" : "pro";
-    setTheme(next);
-    document.body.dataset.theme = next;
     localStorage.setItem("theme", next);
+    window.dispatchEvent(new Event(themeChangeEvent));
   };
 
   return (
     <button
+      type="button"
+      aria-label="Thème Unicorn"
+      aria-pressed={theme === "unicorn"}
       onClick={toggle}
       className="
         relative
         flex
         h-8
-        w-44
+        w-32
+        shrink-0
+        lg:w-44
         items-center
         rounded-full
         border border-white/10
@@ -38,6 +58,7 @@ export default function ThemeToggle() {
         leading-none
         backdrop-blur
         align-middle
+        focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300
       "
     >
       {/* thumb */}
@@ -46,12 +67,12 @@ export default function ThemeToggle() {
           absolute
           inset-y-1
           left-1
-          w-20
+          w-[calc(50%-0.25rem)]
           rounded-full
           bg-white/10
-          transition-transform
-          duration-200
-          ${theme === "unicorn" ? "translate-x-20" : ""}
+          motion-safe:transition-transform
+          motion-safe:duration-200
+          ${theme === "unicorn" ? "translate-x-full" : ""}
         `}
       />
 

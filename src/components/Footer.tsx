@@ -9,7 +9,7 @@ export default function Footer() {
           <p>© {new Date().getFullYear()} Cosmos-lty</p>
           <div className="flex gap-4">
             <Link href="/legal" className="hover:text-zinc-200">
-              Legal
+              Mentions légales
             </Link>
           </div>
         </div>

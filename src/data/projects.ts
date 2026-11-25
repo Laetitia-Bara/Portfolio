@@ -1,140 +1,379 @@
+export type ProjectAvailability = "public" | "demo" | "local" | "targeted";
+
+export type ProjectPlatform = { availability: ProjectAvailability } & (
+  | { kind: "web"; responsive?: boolean; pwa?: "available" | "targeted" }
+  | { kind: "android" | "ios" | "cli" }
+);
+
+type ProjectStatuses =
+  | readonly []
+  | readonly ["design" | "prototype" | "development" | "production"]
+  | readonly ["development" | "production", "refactoring"];
+
+type ProjectDomain = "fullstack-web-mobile" | "backend-business" | "frontend-web";
+type ProjectNature = "personal" | "professional" | "training";
+type ProjectVisibility = "featured" | "catalog" | "draft";
+
+export type ProjectTechnologyLogo =
+  | "dart" | "flutter" | "firebase" | "react" | "typescript"
+  | "nextjs" | "javascript" | "nodejs"
+  | "java" | "spring-boot" | "python" | "postgresql"
+  | "sqlite" | "php" | "symfony" | "vue";
+
+export type ProjectExternalLink = {
+  kind: "website" | "demo" | "googlePlay" | "appStore" | "github";
+  href: `https://${string}`;
+  label?: string;
+};
+
+type ProjectStack = {
+  languages?: readonly string[];
+  runtimes?: readonly string[];
+  frameworks?: readonly string[];
+  databases?: readonly string[];
+  complementary?: readonly string[];
+};
+
+type ProjectVersionIdentity = {
+  slug: string;
+  name: string;
+  summary: string;
+};
+
+type ProjectRelease = {
+  statuses: ProjectStatuses;
+  platforms: readonly ProjectPlatform[];
+  implementedStack?: ProjectStack & {
+    logos?:
+      | readonly [ProjectTechnologyLogo]
+      | readonly [ProjectTechnologyLogo, ProjectTechnologyLogo]
+      | readonly [ProjectTechnologyLogo, ProjectTechnologyLogo, ProjectTechnologyLogo];
+  };
+  roadmap?: {
+    stack?: ProjectStack;
+    features?: readonly string[];
+  };
+  // Recruiter-facing destinations. Keep unresolved URLs out of this list.
+  links: readonly ProjectExternalLink[];
+};
+
 export type Project = {
   slug: string;
   name: string;
-  headline: string;
-  stack: string[];
-  tags?: string[];
-  features: string[];
-  links: { href: string; label?: string; variant?: "webapp" }[];
-  badge?: string;
-  icon?: string;
+  icon?: `/${string}`;
+  summary: string;
+  domains: readonly ProjectDomain[];
+  nature: ProjectNature;
+  visibility: ProjectVisibility;
+  detailsHref?: `/${string}`;
+  current: ProjectRelease & { version?: ProjectVersionIdentity };
+  previousVersions?: readonly (ProjectRelease & { version: ProjectVersionIdentity })[];
 };
 
-export const projects: Project[] = [
-
+export const projects: readonly Project[] = [
   {
     slug: "bob",
-    name: "BoB – Carnet d’Expos Canines",
-    badge: "Production",
-    tags: ["Mobile", "Web app"],
+    name: "BoB",
     icon: "/projects/bob.png",
-    headline:
-      "Une app mobile pour suivre ses chiens, expos, résultats et titres, avec un historique fiable et partageable.",
-    stack: ["Flutter", "Firebase Auth", "Firestore", "Cloudinary", "AdMob"],
-    features: [
-      "Gestion chiens / expos / résultats (UX mobile)",
-      "Tracking titres & automatisations (progression)",
-      "Stockage images optimisé (thumbnails, dossiers, etc.)",
-    ],
-    links: [
-      { label: "Case study", href: "/projects/bob" },
-      { label: "App Store", href: "https://apps.apple.com/fr/app/bob-carnet-dexpos-canines/id6749371300" },
-      { label: "Google Play", href: "https://play.google.com/store/apps/details?id=fr.cosmoslty.bob" },
-      { variant: "webapp", href: "https://bobexpo.fr" },
-    ],
+    summary:
+      "BoB centralise les résultats d’expositions canines, le suivi des titres de champion et le carnet de santé des chiens.",
+    domains: ["fullstack-web-mobile", "backend-business"],
+    nature: "professional",
+    visibility: "featured",
+    detailsHref: "/projects/bob",
+    current: {
+      statuses: ["production"],
+      platforms: [
+        { kind: "web", availability: "public" },
+        { kind: "android", availability: "public" },
+        { kind: "ios", availability: "public" },
+      ],
+      implementedStack: {
+        languages: ["Dart"],
+        frameworks: ["Flutter"],
+        databases: ["Cloud Firestore"],
+        complementary: ["Firebase Auth", "Cloudinary", "AdMob"],
+        logos: ["dart", "flutter", "firebase"],
+      },
+      links: [
+        { kind: "website", href: "https://bobexpo.fr" },
+        { kind: "googlePlay", href: "https://play.google.com/store/apps/details?id=fr.cosmoslty.bob" },
+        { kind: "appStore", href: "https://apps.apple.com/fr/app/bob-carnet-dexpos-canines/id6749371300" },
+      ],
+    },
   },
-
   {
     slug: "lofy",
-    name: "Lofy – Gestion d’élevage canin",
-    badge: "Production",
-    tags: ["Web app"],
+    name: "Lofy",
     icon: "/projects/lofy.png",
-    headline:
-      "Une web app métier pour piloter son élevage canin : chiens, saillies, portées et rappels, avec une logique de données partagée avec BoB.",
-    stack: ["Next.js", "TypeScript", "Firebase Auth", "Firestore", "Cloudinary"],
-    features: [
-      "Gestion chiens / saillies / portées (data croisée avec BoB)",
-      "Tracking des vaccins des chiens (Rappels auto)",
-      "Stockage images optimisé (thumbnails, dossiers, etc.)",
-    ],
-    links: [
-      { label: "Case study", href: "/projects/lofy" },
-      { variant: "webapp", href: "https://lofy.cosmos-lty.fr" },
-    ],
+    summary: "Lofy réunit chiens, saillies, portées et rappels de suivi dans un carnet d’élevage relié à BoB.",
+    domains: ["fullstack-web-mobile", "backend-business"],
+    nature: "professional",
+    visibility: "featured",
+    detailsHref: "/projects/lofy",
+    current: {
+      statuses: ["production"],
+      platforms: [{ kind: "web", availability: "public" }],
+      implementedStack: {
+        languages: ["TypeScript"],
+        frameworks: ["Next.js", "React"],
+        databases: ["Cloud Firestore"],
+        complementary: ["Firebase Auth"],
+        logos: ["typescript", "nextjs", "firebase"],
+      },
+      roadmap: { features: ["Effacement sécurisé des chiens (S2.2), en développement et non publié"] },
+      links: [{ kind: "website", href: "https://lofy.cosmos-lty.fr" }],
+    },
   },
-
   {
     slug: "wow100",
-    name: "WoW100% – Companion de collection WoW",
-    badge: "Production",
-    tags: ["Mobile", "Web app"],
+    name: "WoW100%",
     icon: "/projects/wow100.jpg",
-    headline:
-      "Une app mobile et web pour suivre sa progression World of Warcraft : montures, mascottes, hauts-faits et objectifs par extension.",
-    stack: ["Flutter", "Battle.net OAuth", "Battle.net API", "Web App", "App Store"],
-    features: [
-      "Connexion Battle.net et synchronisation du personnage principal",
-      "Tracking de progression globale et détaillée par extension",
-      "Vue des éléments obtenus / manquants pour viser le 100%",
-    ],
-    links: [
-      { label: "Case study", href: "/projects/wow100" },
-      { label: "App Store", href: "https://apps.apple.com/fr/app/wow100/id6778885180?uo=4" },
-      { label: "Google Play", href: "https://play.google.com/store/apps/details?id=fr.cosmoslty.wow100" },
-      { variant: "webapp", href: "https://wow100.cosmos-lty.fr" },
-    ],
+    summary: "Un outil pour suivre ses collections World of Warcraft et repérer les montures, mascottes et hauts faits manquants.",
+    domains: ["fullstack-web-mobile"],
+    nature: "personal",
+    visibility: "featured",
+    detailsHref: "/projects/wow100",
+    current: {
+      statuses: ["production"],
+      platforms: [
+        { kind: "web", availability: "public" },
+        { kind: "android", availability: "public" },
+        { kind: "ios", availability: "public" },
+      ],
+      implementedStack: {
+        languages: ["Dart"],
+        frameworks: ["Flutter"],
+        databases: ["Cloud Firestore"],
+        complementary: ["Battle.net API et OAuth", "Firebase Auth", "AdMob"],
+        logos: ["dart", "flutter", "firebase"],
+      },
+      links: [
+        { kind: "website", href: "https://wow100.cosmos-lty.fr" },
+        { kind: "googlePlay", href: "https://play.google.com/store/apps/details?id=fr.cosmoslty.wow100" },
+        { kind: "appStore", href: "https://apps.apple.com/fr/app/wow100-tracker-de-collection/id6778885180" },
+      ],
+    },
   },
-
   {
     slug: "tempo",
-    name: "Tempo - Gestion des plages horaires de travail",
-    badge: "Production",
-    tags: ["Mobile"],
+    name: "Tempo",
     icon: "/projects/tempo.png",
-    headline:
-      "Une app mobile pour suivre ses horaires de travail et ses plages planifiées avec une vision claire des totaux hebdo et mensuels.",
-    stack: ["Flutter", "Firebase Auth", "Firestore", "AdMob"],
-    features: [
-      "Gestion du contrat de travail / Jours travaillés / Total mensuel (UX mobile)",
-      "Tracking du total d'heures mensuelles / hebdo (conformité contrat)",
-      "Modifications manuelles des plages travaillées occasionnelles",
-    ],
-    links: [
-      { label: "Case study", href: "/projects/tempo" },
-      { label: "App Store", href: "https://apps.apple.com/fr/app/tempoo/id6762077819" },
-      { label: "Google Play", href: "https://play.google.com/store/apps/details?id=fr.cosmoslty.tempo" },
-    ],
+    summary: "Tempo permet de planifier ses horaires de travail et de suivre ses heures par semaine et par mois.",
+    domains: ["fullstack-web-mobile", "backend-business"],
+    nature: "personal",
+    visibility: "featured",
+    detailsHref: "/projects/tempo",
+    current: {
+      statuses: ["production"],
+      platforms: [
+        { kind: "android", availability: "public" },
+        { kind: "ios", availability: "public" },
+      ],
+      implementedStack: {
+        languages: ["Dart"],
+        frameworks: ["Flutter"],
+        databases: ["Cloud Firestore"],
+        complementary: ["Firebase Auth", "AdMob"],
+        logos: ["dart", "flutter", "firebase"],
+      },
+      links: [
+        { kind: "googlePlay", href: "https://play.google.com/store/apps/details?id=fr.cosmoslty.tempo" },
+        { kind: "appStore", href: "https://apps.apple.com/fr/app/tempoo/id6762077819" },
+      ],
+    },
   },
-
   {
     slug: "weekendly",
     name: "WeekEndly",
-    badge: "Dev",
-    tags: ["Web app"],
     icon: "/projects/weekendly.png",
-    headline:
-      "Un tableau météo orienté décision pour planifier les sorties du week-end (créneaux, lisibilité mobile, UX).",
-    stack: ["React/Next", "Node", "API météo", "Vercel", "UI responsive"],
-    features: [
-      "Affichage par créneaux et synthèse “Top 3”",
-      "Responsive mobile-first",
-      "Déploiement & DNS (prod)",
-    ],
-    links: [
-      { label: "Case study", href: "/weekendly" },
-      { label: "Démo", href: "https://weekendly.cosmos-lty.fr" },
-      { label: "Code", href: "https://github.com/Laetitia-Bara/weekendly" },
+    summary: "WeekEndly repère les créneaux météo les plus favorables pour planifier une sortie le week-end.",
+    domains: ["fullstack-web-mobile", "backend-business"],
+    nature: "personal",
+    visibility: "featured",
+    current: {
+      statuses: ["production"],
+      platforms: [{ kind: "web", availability: "public", responsive: true }],
+      implementedStack: {
+        languages: ["JavaScript"],
+        runtimes: ["Node.js"],
+        frameworks: ["Express"],
+        complementary: ["Open-Meteo"],
+        logos: ["javascript", "nodejs"],
+      },
+      links: [
+        { kind: "website", href: "https://weekendly.cosmos-lty.fr" },
+        { kind: "github", href: "https://github.com/Laetitia-Bara/WeekEndly" },
+      ],
+    },
+  },
+  {
+    slug: "portfolio",
+    name: "Portfolio",
+    icon: "/icone.png",
+    summary: "Une vitrine Web pour présenter mes réalisations, leurs stacks et leurs études de cas.",
+    domains: ["frontend-web"],
+    nature: "professional",
+    visibility: "featured",
+    current: {
+      statuses: ["production"],
+      platforms: [{ kind: "web", availability: "public", responsive: true }],
+      implementedStack: {
+        languages: ["TypeScript"],
+        frameworks: ["Next.js", "React"],
+        complementary: ["Tailwind CSS", "Lucide", "React Icons"],
+        logos: ["typescript", "nextjs", "react"],
+      },
+      links: [
+        { kind: "website", href: "https://www.cosmos-lty.fr" },
+        { kind: "github", href: "https://github.com/Laetitia-Bara/Portfolio" },
+      ],
+    },
+  },
+  {
+    slug: "ablette",
+    name: "Ablette",
+    icon: "/projects/ablette.svg",
+    summary: "Un carnet automobile pour suivre les véhicules et leur entretien.",
+    domains: ["backend-business", "fullstack-web-mobile"],
+    nature: "personal",
+    visibility: "catalog",
+    detailsHref: "/projects/ablette",
+    current: {
+      version: {
+        slug: "ablette-2",
+        name: "Ablette",
+        summary: "Un carnet automobile avec une API REST pour enregistrer et consulter ses véhicules dans PostgreSQL.",
+      },
+      statuses: ["development"],
+      platforms: [{ kind: "web", availability: "local", responsive: true, pwa: "targeted" }],
+      implementedStack: {
+        languages: ["Java 21", "TypeScript"],
+        frameworks: ["Spring Boot", "React"],
+        databases: ["PostgreSQL"],
+        complementary: ["Flyway", "OpenAPI", "JUnit", "Testcontainers", "Docker Compose", "GitHub Actions"],
+        logos: ["java", "spring-boot", "postgresql"],
+      },
+      roadmap: { features: ["Comptes utilisateurs", "Entretiens", "Factures", "Hébergement"] },
+      links: [
+        { kind: "github", href: "https://github.com/Laetitia-Bara/Ablette/tree/codex/ablette-2-a01" },
+      ],
+    },
+    previousVersions: [
+      {
+        version: {
+          slug: "ablette-flutter",
+          name: "Prototype Flutter",
+          summary: "Garage local, rappels d’entretien et suivi du kilométrage.",
+        },
+        statuses: ["prototype"],
+        platforms: [
+          { kind: "android", availability: "targeted" },
+          { kind: "ios", availability: "targeted" },
+        ],
+        implementedStack: { languages: ["Dart"], frameworks: ["Flutter"] },
+        links: [{ kind: "github", href: "https://github.com/Laetitia-Bara/Ablette" }],
+      },
     ],
   },
-
+  {
+    slug: "roland-roro",
+    name: "Roro",
+    icon: "/projects/roro.png",
+    summary: "Une famille d’outils de suivi des créneaux de paniers et d’expérimentation de la planification.",
+    domains: ["backend-business", "fullstack-web-mobile"],
+    nature: "personal",
+    visibility: "catalog",
+    current: {
+      version: {
+        slug: "roro-3",
+        name: "Roro",
+        summary: "Un carnet familial à saisie manuelle et un simulateur de suivi des créneaux de paniers sur données fictives.",
+      },
+      statuses: ["development"],
+      platforms: [{ kind: "web", availability: "local", responsive: true }],
+      implementedStack: {
+        languages: ["Python"],
+        frameworks: ["NiceGUI"],
+        databases: ["SQLite"],
+        complementary: ["pytest", "Ruff", "GitHub Actions"],
+        logos: ["python", "sqlite"],
+      },
+      links: [{ kind: "github", href: "https://github.com/Laetitia-Bara/Roro3" }],
+    },
+    previousVersions: [
+      {
+        version: {
+          slug: "roro-2",
+          name: "Roro 2",
+          summary: "Prototype local de suivi des favoris et des créneaux.",
+        },
+        statuses: ["prototype"],
+        platforms: [{ kind: "cli", availability: "local" }],
+        implementedStack: { languages: ["Python"], complementary: ["Telegram"] },
+        links: [],
+      },
+      {
+        version: {
+          slug: "roland",
+          name: "Roland",
+          summary: "Application mobile de suivi manuel des horaires et de rappels.",
+        },
+        statuses: ["prototype"],
+        platforms: [
+          { kind: "android", availability: "targeted" },
+          { kind: "ios", availability: "targeted" },
+        ],
+        implementedStack: {
+          languages: ["Dart"],
+          frameworks: ["Flutter"],
+          complementary: ["SharedPreferences", "Notifications locales"],
+        },
+        links: [],
+      },
+    ],
+  },
+  {
+    slug: "nextstep",
+    name: "NextStep",
+    icon: "/projects/nextstep.png",
+    summary: "Un premier socle de gestion des offres et candidatures, avec une API REST et une interface Vue alimentée par des données d’exemple.",
+    domains: ["backend-business", "fullstack-web-mobile"],
+    nature: "personal",
+    visibility: "catalog",
+    current: {
+      statuses: ["development"],
+      platforms: [{ kind: "web", availability: "local" }],
+      implementedStack: {
+        languages: ["PHP 8.3", "TypeScript"],
+        frameworks: ["Symfony", "Vue 3"],
+        complementary: ["Doctrine", "Vite", "Docker Compose", "Configuration PostgreSQL"],
+        logos: ["php", "symfony", "vue"],
+      },
+      roadmap: {
+        features: ["Kanban", "Relances", "Entretiens", "Analyse des annonces"],
+      },
+      links: [{ kind: "github", href: "https://github.com/Laetitia-Bara/NextStep" }],
+    },
+  },
   {
     slug: "bootcamp",
-    name: "Bootcamp – MyMoviz / Yams",
-    badge: "Bootcamp",
-    tags: ["Dev"],
+    name: "Bootcamp",
     icon: "/projects/la-capsule.png",
-    headline:
-      "Des mini-apps pour valider React (state, events, composants) + tests et rigueur front.",
-    stack: ["React", "Next", "Jest / Testing Library", "CSS Modules"],
-    features: [
-      "Gestion state & interactions (like/dislike, dice, etc.)",
-      "Composants réutilisables & rendu de listes",
-      "Tests automatisés (TDD-friendly)",
-    ],
-    links: [
-      { label: "Repo", href: "#" },
-      { label: "Détails", href: "/projects" },
-    ],
+    summary: "Projets réalisés à La Capsule, dont le catalogue de films MyMoviz et le jeu de dés Yam’s.",
+    domains: ["fullstack-web-mobile"],
+    nature: "training",
+    visibility: "catalog",
+    current: {
+      statuses: [],
+      platforms: [{ kind: "web", availability: "local" }],
+      implementedStack: {
+        runtimes: ["Node.js"],
+        frameworks: ["Next.js", "React", "Express"],
+        complementary: ["Jest", "Testing Library", "Supertest"],
+        logos: ["react", "nextjs"],
+      },
+      links: [{ kind: "github", href: "https://github.com/Laetitia-Bara/MyMoviz", label: "GitHub · MyMoviz" }],
+    },
   },
 ];
