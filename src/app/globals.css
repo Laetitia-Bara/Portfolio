@@ -64,6 +64,14 @@ body::before {
     filter: blur(var(--wallpaper-blur));
 }
 
+body[data-theme="pro"]::before {
+    background:
+        linear-gradient(105deg, rgba(22, 30, 54, 0.78), rgba(28, 39, 67, 0.48) 55%, rgba(16, 30, 48, 0.24)),
+        linear-gradient(180deg, rgba(12, 19, 39, 0.08), rgba(13, 22, 41, 0.35)),
+        var(--wallpaper-url) center / cover no-repeat,
+        #243752;
+}
+
 /* Grain léger pour supprimer l'effet "bande" */
 body::after {
     content: "";
@@ -82,9 +90,11 @@ body[data-theme="pro"] {
     --accent-secondary: 0, 200, 255;
     --accent-tertiary: 180, 120, 255;
     --sparkle-opacity: 0.02;
-    --wallpaper-url: none;
+    --wallpaper-url: url("/wallpapers/pro-circuit.webp");
     --wallpaper-opacity: 0;
     --wallpaper-blur: 0px;
+    --section-accent: #9ddfff;
+    --panel-heading: #e0f4ff;
 }
 
 body[data-theme="unicorn"] {
@@ -97,6 +107,30 @@ body[data-theme="unicorn"] {
         /* ajuste 0.12 -> 0.35 selon lisibilité */
     --wallpaper-blur: 0px;
         /* ex: 6px si tu veux le “fondre” */
+    --section-accent: #f4a7e3;
+    --panel-heading: #ffe4f6;
+}
+
+@media (max-width: 639px) {
+    body[data-theme="pro"]::before {
+        background-position: center, center, 62% center;
+    }
+}
+
+.section-title::before {
+    content: "";
+    flex: 0 0 0.2rem;
+    height: 0.9em;
+    border-radius: 9999px;
+    background-color: var(--section-accent);
+}
+
+.skill-panel-title {
+    color: var(--panel-heading);
+}
+
+.skill-panel-title svg {
+    color: var(--section-accent);
 }
 
 /* UNICORN HERO TEXT */

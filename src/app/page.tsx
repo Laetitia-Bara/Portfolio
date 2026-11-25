@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { CodeXml, GraduationCap, Server, Workflow } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import Container from "../components/Container";
 import ProjectGrid from "../components/ProjectGrid";
@@ -24,7 +25,10 @@ export const metadata: Metadata = {
 };
 
 const featuredProjects = projects.filter((project) => project.visibility === "featured");
-const panel = "min-w-0 rounded-2xl border border-white/15 bg-zinc-950/60 p-4 sm:p-5";
+const panel = "min-w-0 rounded-2xl border border-white/15 bg-zinc-950/70 p-4 sm:p-5";
+const panelTitle =
+  "skill-panel-title flex items-center gap-2.5 border-b border-white/15 pb-3 text-xl font-semibold tracking-tight sm:text-2xl";
+const panelIcon = "size-5 shrink-0";
 const projectLink =
   "rounded-sm font-medium text-cyan-100 underline decoration-cyan-200/50 underline-offset-4 hover:decoration-cyan-100";
 
@@ -74,7 +78,10 @@ export default function HomePage() {
       <Section id="competences" title="Compétences">
         <div className="grid gap-4 md:grid-cols-2">
           <section aria-labelledby="frontend-title" className={panel}>
-            <h3 id="frontend-title" className="text-lg font-semibold">Front-end</h3>
+            <h3 id="frontend-title" className={panelTitle}>
+              <CodeXml aria-hidden="true" focusable="false" className={panelIcon} />
+              Front-end
+            </h3>
             <dl className="mt-3 grid gap-3 text-sm leading-relaxed text-zinc-300">
               <div>
                 <dt className="font-semibold text-zinc-100">Web</dt>
@@ -101,7 +108,10 @@ export default function HomePage() {
           </section>
 
           <section aria-labelledby="backend-title" className={panel}>
-            <h3 id="backend-title" className="text-lg font-semibold">Backend</h3>
+            <h3 id="backend-title" className={panelTitle}>
+              <Server aria-hidden="true" focusable="false" className={panelIcon} />
+              Backend
+            </h3>
             <dl className="mt-3 grid gap-3 text-sm leading-relaxed text-zinc-300">
               <div>
                 <dt className="font-semibold text-zinc-100">Serveur et API</dt>
@@ -124,7 +134,10 @@ export default function HomePage() {
         </div>
 
         <section aria-labelledby="delivery-title" className={`mt-4 ${panel}`}>
-          <h3 id="delivery-title" className="text-lg font-semibold">Livraison et suivi de projet</h3>
+          <h3 id="delivery-title" className={panelTitle}>
+            <Workflow aria-hidden="true" focusable="false" className={panelIcon} />
+            Livraison et suivi de projet
+          </h3>
           <dl className="mt-3 grid gap-3 text-sm leading-relaxed text-zinc-300 md:grid-cols-3 md:gap-5">
             <div>
               <dt className="font-semibold text-zinc-100">Versionnement et environnement</dt>
@@ -145,8 +158,11 @@ export default function HomePage() {
         </section>
 
         <section aria-labelledby="training-title" className={`mt-4 ${panel}`}>
-          <h3 id="training-title" className="text-lg font-semibold">Certifications et formation</h3>
-          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-zinc-300">
+          <h3 id="training-title" className={panelTitle}>
+            <GraduationCap aria-hidden="true" focusable="false" className={panelIcon} />
+            Certifications et formation
+          </h3>
+          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-zinc-300">
             Je prépare une certification Java et je poursuis ma formation en SQL et PHP avec des
             objectifs de certification. J’applique ces apprentissages dans Ablette et NextStep.
             Kubernetes fait aussi partie de mon parcours de formation.
