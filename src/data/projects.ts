@@ -234,7 +234,7 @@ export const projects: readonly Project[] = [
     slug: "ablette",
     name: "Ablette",
     icon: "/projects/ablette.svg",
-    summary: "Un carnet automobile pour suivre les véhicules et leur entretien.",
+    summary: "Un carnet d'entretien automobile pour suivre les véhicules et leur entretien.",
     domains: ["backend-business", "fullstack-web-mobile"],
     nature: "personal",
     visibility: "catalog",
@@ -243,7 +243,7 @@ export const projects: readonly Project[] = [
       version: {
         slug: "ablette-2",
         name: "Ablette",
-        summary: "Un carnet automobile avec une API REST pour enregistrer et consulter ses véhicules dans PostgreSQL.",
+        summary: "Un carnet d'entretien automobile avec une API REST pour enregistrer et consulter ses véhicules dans PostgreSQL.",
       },
       statuses: ["development"],
       platforms: [{ kind: "web", availability: "local", responsive: true, pwa: "targeted" }],

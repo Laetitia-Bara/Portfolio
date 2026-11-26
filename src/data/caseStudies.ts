@@ -149,7 +149,7 @@ export const caseStudies = {
       "Lofy est disponible sur le Web pour suivre les chiens, les saillies, les portées et les rappels.",
   },
   ablette: {
-    subtitle: "Carnet automobile et gestion du garage",
+    subtitle: "Carnet d'entretien automobile et gestion du garage",
     heroImage: {
       src: "/projects/ablette/garage-1440.png",
       width: 1440,
