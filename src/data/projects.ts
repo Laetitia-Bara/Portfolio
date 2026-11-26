@@ -288,7 +288,7 @@ export const projects: readonly Project[] = [
       version: {
         slug: "roro-3",
         name: "Roro",
-        summary: "Un carnet familial à saisie manuelle et un simulateur de suivi des créneaux de paniers sur données fictives.",
+        summary: "Algorithme de suivi des créneaux de mise en ligne et réservation automatisée de paniers anti-gaspi.",
       },
       statuses: ["development"],
       platforms: [{ kind: "web", availability: "local", responsive: true }],
