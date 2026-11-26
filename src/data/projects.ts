@@ -16,7 +16,7 @@ type ProjectVisibility = "featured" | "catalog" | "draft";
 
 export type ProjectTechnologyLogo =
   | "dart" | "flutter" | "firebase" | "react" | "typescript"
-  | "nextjs" | "javascript" | "nodejs"
+  | "nextjs" | "javascript" | "nodejs" | "expo"
   | "java" | "spring-boot" | "python" | "postgresql"
   | "sqlite" | "php" | "symfony" | "vue";
 
@@ -357,6 +357,32 @@ export const projects: readonly Project[] = [
     },
   },
   {
+    slug: "bis-2-0",
+    name: "BIS 2.0",
+    icon: "/projects/bis.png",
+    summary:
+      "Application mobile de suivi personnel développée avec React Native et Expo, combinant mesures corporelles, graphiques d’évolution et stockage local chiffré.",
+    domains: ["fullstack-web-mobile"],
+    nature: "personal",
+    visibility: "catalog",
+    detailsHref: "/projects/bis-2-0",
+    current: {
+      statuses: ["development"],
+      platforms: [
+        { kind: "android", availability: "local" },
+        { kind: "ios", availability: "targeted" },
+      ],
+      implementedStack: {
+        languages: ["TypeScript"],
+        frameworks: ["React Native", "Expo SDK 57"],
+        databases: ["SQLite avec SQLCipher"],
+        complementary: ["Expo SecureStore", "Architecture offline-first"],
+        logos: ["expo", "typescript", "sqlite"],
+      },
+      links: [],
+    },
+  },
+  {
     slug: "bootcamp",
     name: "Bootcamp",
     icon: "/projects/la-capsule.png",
@@ -377,3 +403,5 @@ export const projects: readonly Project[] = [
     },
   },
 ];
+
+export const catalogueProjects = projects.filter((project) => project.visibility !== "draft");

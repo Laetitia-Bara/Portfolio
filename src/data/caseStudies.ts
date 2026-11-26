@@ -34,6 +34,54 @@ export type CaseStudyContent = {
 };
 
 export const caseStudies = {
+  bis: {
+    subtitle: "Body Insight & Sport, carnet mobile de suivi personnel",
+    context: {
+      description:
+        "J’ai créé BIS pour suivre mes mesures, mon hydratation et les événements du quotidien dans un carnet personnel. La refonte met l’accent sur les tendances et sur un profil conservé sur l’appareil.",
+      role: "J’ai conçu et développé le carnet mobile, de la saisie et des graphiques aux migrations SQLite et au parcours de restauration.",
+    },
+    architecture: {
+      stages: [
+        {
+          title: "Saisie et graphiques",
+          stack: "React Native / Expo / TypeScript",
+          description: "Le carnet affiche les mesures et leurs variations par période et par balance, avec des objectifs personnalisables.",
+        },
+        {
+          title: "Stockage sur l’appareil",
+          stack: "SQLite / SQLCipher / Expo SecureStore",
+          description: "Les migrations structurent les données locales. La configuration native active SQLCipher et SecureStore conserve la clé de chiffrement.",
+        },
+        {
+          title: "Export et restauration",
+          stack: "JSON versionné / CSV",
+          description: "Le JSON sauvegarde le carnet pour une restauration complète. Les exports CSV servent à relire les données dans un tableur.",
+        },
+      ],
+    },
+    highlights: [
+      {
+        title: "Des tendances comparables",
+        description:
+          "Les tendances se filtrent par période et par balance, par exemple Maison ou Salle. Les graphiques montrent les valeurs manquantes et l’historique permet de modifier ou de supprimer une mesure, avec annulation de la suppression.",
+      },
+      {
+        title: "Restauration transactionnelle",
+        description:
+          "BIS vérifie le format et les références du fichier JSON avant le remplacement du carnet local. Une erreur d’écriture annule la restauration entière. Réimporter la même sauvegarde conserve les identifiants et le nombre d’entrées. Les fichiers exportés sont en clair.",
+      },
+    ],
+    quality: {
+      results: [{ value: "42", label: "Tests automatisés réussis" }],
+      detail:
+        "Les tests Node couvrent la restauration SQLite et son annulation sur erreur, les graphiques et la saisie de l’objectif de sommeil. La normalisation, l’import et l’agrégation des données d’activité sont testés avec un fournisseur fictif. Les connecteurs natifs HealthKit et Health Connect restent à développer et à valider.",
+      limits:
+        "Une build Android interne a été produite pour un lot précédent. La recette du lot actuel sur iOS reste prévue sur simulateur. Le chiffrement SQLCipher se vérifie séparément sur les builds natives.",
+    },
+    delivered:
+      "Le carnet en développement permet de suivre le poids, la composition corporelle et l’hydratation, de tenir un journal et de sauvegarder ses données localement. L’interface propose les thèmes clair et sombre.",
+  },
   bob: {
     subtitle: "Carnet d’expositions canines et suivi des titres",
     heroImage: {

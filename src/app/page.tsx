@@ -6,7 +6,7 @@ import Container from "../components/Container";
 import ProjectGrid from "../components/ProjectGrid";
 import Section from "../components/Section";
 import SocialIcon from "../components/SocialLinks";
-import { projects } from "../data/projects";
+import { catalogueProjects, projects } from "../data/projects";
 
 const description =
   "Laëtitia Bara, développeuse d’applications web, mobiles et métier. Applications en production, compétences et études de cas.";
@@ -93,7 +93,7 @@ export default function HomePage() {
               </div>
               <div>
                 <dt className="font-semibold text-zinc-100">Mobile</dt>
-                <dd>Dart / Flutter et React Native / Expo (LevelUp et BIS, en développement).</dd>
+                <dd>Dart / Flutter et React Native / Expo (LevelUp, en développement).</dd>
               </div>
               <div>
                 <dt className="font-semibold text-zinc-100">Interfaces métier</dt>
@@ -176,7 +176,7 @@ export default function HomePage() {
           href="/projects"
           className="mt-6 inline-flex rounded-xl bg-white/10 px-4 py-2 text-sm font-semibold ring-1 ring-white/20 hover:bg-white/15"
         >
-          Voir les dix projets
+          Voir les {catalogueProjects.length} projets
         </Link>
       </Section>
 
