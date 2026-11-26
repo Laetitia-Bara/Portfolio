@@ -337,7 +337,7 @@ export const projects: readonly Project[] = [
     slug: "nextstep",
     name: "NextStep",
     icon: "/projects/nextstep.png",
-    summary: "Un premier socle de gestion des offres et candidatures, avec une API REST et une interface Vue alimentée par des données d’exemple.",
+    summary: "Gestion des offres et candidatures d'emploi, avec suivi des relances et des entretiens.",
     domains: ["backend-business", "fullstack-web-mobile"],
     nature: "personal",
     visibility: "catalog",
