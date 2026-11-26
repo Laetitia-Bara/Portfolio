@@ -160,7 +160,7 @@ export const caseStudies = {
     context: {
       description:
         "Le suivi automobile commence par une fiche fiable pour chaque véhicule. Le premier lot centralise les informations du garage et permet de les retrouver après un redémarrage de l’application et de la base.",
-      role: "Conception et développement fullstack du lot garage, du formulaire React au contrat REST, à la persistance et aux tests automatisés.",
+      role: "Conception et développement Full Stack du lot garage, du formulaire React au contrat REST, à la persistance et aux tests automatisés.",
     },
     architecture: {
       stages: [

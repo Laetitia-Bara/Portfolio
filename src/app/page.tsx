@@ -80,7 +80,7 @@ export default function HomePage() {
           <section aria-labelledby="frontend-title" className={panel}>
             <h3 id="frontend-title" className={panelTitle}>
               <CodeXml aria-hidden="true" focusable="false" className={panelIcon} />
-              Front-end
+              Frontend
             </h3>
             <dl className="mt-3 grid gap-3 text-sm leading-relaxed text-zinc-300">
               <div>
