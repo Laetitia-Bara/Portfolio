@@ -11,21 +11,24 @@ import {
 } from "./projectPresentation";
 
 export default function ProjectCard({ project }: { project: Project }) {
-  const { current, detailsHref, icon, name } = project;
+  const { category, current, detailsHref, fullName, icon, name } = project;
   const summary = getProjectSummary(project);
   const implemented = current.implementedStack;
   const planned = current.roadmap?.stack;
   const badges = getProjectBadges(project);
   const mainStack = getMainStack(implemented);
   const secondaryStack = implemented?.complementary ?? [];
-  const plannedStack = [...getMainStack(planned), ...(planned?.complementary ?? [])];
+  const plannedStack = getMainStack(planned);
+  const plannedComplementary = planned?.complementary ?? [];
+  const logos = implemented?.logos ?? planned?.logos;
+  const hasLinks = Boolean(detailsHref || current.links.length);
 
   return (
     <article
       id={project.slug}
-      className="card-theme relative isolate flex min-w-0 scroll-mt-32 flex-col gap-3.5 rounded-2xl p-4 shadow-sm sm:scroll-mt-24
+      className={`card-theme relative isolate flex min-w-0 scroll-mt-32 flex-col gap-3.5 rounded-2xl p-4 shadow-sm sm:scroll-mt-24
         border border-[rgba(var(--card-border),0.18)] bg-[rgba(var(--card-bg),0.06)]
-        transition-colors hover:border-cyan-200/50 hover:bg-[rgba(var(--card-bg),0.10)] focus-within:border-cyan-200/50"
+        ${hasLinks ? "transition-colors hover:border-cyan-200/50 hover:bg-[rgba(var(--card-bg),0.10)] focus-within:border-cyan-200/50" : ""}`}
     >
       <div className="flex items-start gap-3 sm:min-h-11">
         <div className="flex min-w-0 flex-1 items-center gap-2.5">
@@ -50,9 +53,9 @@ export default function ProjectCard({ project }: { project: Project }) {
           </h3>
         </div>
 
-        {implemented?.logos && (
-          <ul aria-label="Logos technologiques" className="flex shrink-0 gap-1 sm:gap-1.5" role="list">
-            {implemented.logos.map((technology) => {
+        {logos && (
+          <ul aria-label={implemented?.logos ? "Logos technologiques" : "Logos des technologies envisagées"} className="flex shrink-0 gap-1 sm:gap-1.5" role="list">
+            {logos.map((technology) => {
               const { name, Icon, color } = technologies[technology];
               return (
                 <li key={technology} className="grid h-6 w-6 place-items-center rounded-md bg-white/5 text-cyan-100 sm:h-7 sm:w-7">
@@ -85,9 +88,16 @@ export default function ProjectCard({ project }: { project: Project }) {
         </div>
       )}
 
+      {(fullName || category) && (
+        <div className="space-y-0.5 text-xs leading-relaxed">
+          {fullName && <p className="font-medium text-zinc-200">{fullName}</p>}
+          {category && <p className="text-zinc-400">{category}</p>}
+        </div>
+      )}
+
       <p className="text-sm leading-relaxed text-zinc-300">{summary}</p>
 
-      {(mainStack.length > 0 || secondaryStack.length > 0 || plannedStack.length > 0) && (
+      {(mainStack.length > 0 || secondaryStack.length > 0 || plannedStack.length > 0 || plannedComplementary.length > 0) && (
         <dl className="space-y-2 border-t border-[rgba(var(--card-border),0.16)] pt-3 [overflow-wrap:anywhere]">
           {mainStack.length > 0 && (
             <div>
@@ -112,7 +122,13 @@ export default function ProjectCard({ project }: { project: Project }) {
           {plannedStack.length > 0 && (
             <div>
               <dt className="text-xs font-medium text-zinc-300">Stack envisagée</dt>
-              <dd className="text-xs leading-relaxed text-zinc-400">{plannedStack.join(" · ")}</dd>
+              <dd className="mt-1 text-xs font-medium leading-relaxed text-zinc-200">{plannedStack.join(" · ")}</dd>
+            </div>
+          )}
+          {plannedComplementary.length > 0 && (
+            <div>
+              <dt className="sr-only">Technologies complémentaires envisagées</dt>
+              <dd className="text-xs leading-relaxed text-zinc-400">{plannedComplementary.join(" · ")}</dd>
             </div>
           )}
         </dl>

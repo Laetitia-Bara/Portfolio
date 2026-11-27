@@ -32,6 +32,10 @@ type ProjectStack = {
   frameworks?: readonly string[];
   databases?: readonly string[];
   complementary?: readonly string[];
+  logos?:
+    | readonly [ProjectTechnologyLogo]
+    | readonly [ProjectTechnologyLogo, ProjectTechnologyLogo]
+    | readonly [ProjectTechnologyLogo, ProjectTechnologyLogo, ProjectTechnologyLogo];
 };
 
 type ProjectVersionIdentity = {
@@ -43,12 +47,7 @@ type ProjectVersionIdentity = {
 type ProjectRelease = {
   statuses: ProjectStatuses;
   platforms: readonly ProjectPlatform[];
-  implementedStack?: ProjectStack & {
-    logos?:
-      | readonly [ProjectTechnologyLogo]
-      | readonly [ProjectTechnologyLogo, ProjectTechnologyLogo]
-      | readonly [ProjectTechnologyLogo, ProjectTechnologyLogo, ProjectTechnologyLogo];
-  };
+  implementedStack?: ProjectStack;
   roadmap?: {
     stack?: ProjectStack;
     features?: readonly string[];
@@ -60,6 +59,8 @@ type ProjectRelease = {
 export type Project = {
   slug: string;
   name: string;
+  fullName?: string;
+  category?: string;
   icon?: `/${string}`;
   summary: string;
   domains: readonly ProjectDomain[];
@@ -378,6 +379,57 @@ export const projects: readonly Project[] = [
         databases: ["SQLite avec SQLCipher"],
         complementary: ["Expo SecureStore", "Architecture offline-first"],
         logos: ["expo", "typescript", "sqlite"],
+      },
+      links: [],
+    },
+  },
+  {
+    slug: "orbit",
+    name: "Orbit",
+    fullName: "Orbit — Cosmos-lty Control Center",
+    category: "Analytics / Business Management",
+    icon: "/projects/orbit.webp",
+    summary:
+      "Outil métier interne de pilotage centralisé prévu pour l’analyse d’audience, les statistiques, le reporting automatisé et la gestion des sponsors et des campagnes publicitaires.",
+    domains: ["backend-business", "fullstack-web-mobile"],
+    nature: "personal",
+    visibility: "catalog",
+    current: {
+      statuses: ["development"],
+      platforms: [{ kind: "web", availability: "targeted", responsive: true }],
+      roadmap: {
+        stack: {
+          languages: ["PHP"],
+          frameworks: ["Symfony"],
+          databases: ["PostgreSQL"],
+          complementary: [
+            "Vue.js",
+            "TypeScript",
+            "Twig",
+            "Doctrine ORM",
+            "API REST",
+            "Chart.js",
+            "Symfony Console",
+            "Symfony Mailer",
+            "PHPUnit",
+            "Docker",
+            "GitHub Actions / CI/CD",
+          ],
+          logos: ["php", "symfony", "vue"],
+        },
+        features: [
+          "Tableau de bord Analytics multi-applications",
+          "Statistiques Firestore",
+          "Audience et croissance",
+          "Suivi des clics externes",
+          "Statistiques Premium et abonnements",
+          "Intégration des rapports Google Play et App Store",
+          "Reporting automatisé",
+          "Exports CSV",
+          "Gestion des sponsors",
+          "Gestion des campagnes publicitaires",
+          "Scripts CLI et traitements automatisés",
+        ],
       },
       links: [],
     },
