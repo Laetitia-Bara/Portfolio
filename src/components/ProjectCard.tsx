@@ -11,7 +11,7 @@ import {
 } from "./projectPresentation";
 
 export default function ProjectCard({ project }: { project: Project }) {
-  const { category, current, detailsHref, fullName, icon, name } = project;
+  const { current, detailsHref, icon, name } = project;
   const summary = getProjectSummary(project);
   const implemented = current.implementedStack;
   const planned = current.roadmap?.stack;
@@ -88,13 +88,6 @@ export default function ProjectCard({ project }: { project: Project }) {
         </div>
       )}
 
-      {(fullName || category) && (
-        <div className="space-y-0.5 text-xs leading-relaxed">
-          {fullName && <p className="font-medium text-zinc-200">{fullName}</p>}
-          {category && <p className="text-zinc-400">{category}</p>}
-        </div>
-      )}
-
       <p className="text-sm leading-relaxed text-zinc-300">{summary}</p>
 
       {(mainStack.length > 0 || secondaryStack.length > 0 || plannedStack.length > 0 || plannedComplementary.length > 0) && (
@@ -119,16 +112,17 @@ export default function ProjectCard({ project }: { project: Project }) {
               <dd className="text-xs leading-relaxed text-zinc-400">{secondaryStack.join(" · ")}</dd>
             </div>
           )}
-          {plannedStack.length > 0 && (
+          {(plannedStack.length > 0 || plannedComplementary.length > 0) && (
             <div>
-              <dt className="text-xs font-medium text-zinc-300">Stack envisagée</dt>
-              <dd className="mt-1 text-xs font-medium leading-relaxed text-zinc-200">{plannedStack.join(" · ")}</dd>
-            </div>
-          )}
-          {plannedComplementary.length > 0 && (
-            <div>
-              <dt className="sr-only">Technologies complémentaires envisagées</dt>
-              <dd className="text-xs leading-relaxed text-zinc-400">{plannedComplementary.join(" · ")}</dd>
+              <dt className="text-xs font-medium text-zinc-300">
+                {plannedStack.length > 0 ? "Stack envisagée" : "Technologies envisagées"}
+              </dt>
+              {plannedStack.length > 0 && (
+                <dd className="mt-1 text-xs font-medium leading-relaxed text-zinc-200">{plannedStack.join(" · ")}</dd>
+              )}
+              {plannedComplementary.length > 0 && (
+                <dd className="text-xs leading-relaxed text-zinc-400">{plannedComplementary.join(" · ")}</dd>
+              )}
             </div>
           )}
         </dl>

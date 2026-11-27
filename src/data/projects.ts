@@ -63,6 +63,7 @@ export type Project = {
   category?: string;
   icon?: `/${string}`;
   summary: string;
+  keywords?: readonly string[];
   domains: readonly ProjectDomain[];
   nature: ProjectNature;
   visibility: ProjectVisibility;
@@ -189,6 +190,7 @@ export const projects: readonly Project[] = [
     name: "WeekEndly",
     icon: "/projects/weekendly.png",
     summary: "WeekEndly repère les créneaux météo les plus favorables pour planifier une sortie le week-end.",
+    keywords: ["API météo"],
     domains: ["fullstack-web-mobile", "backend-business"],
     nature: "personal",
     visibility: "featured",
@@ -339,6 +341,7 @@ export const projects: readonly Project[] = [
     name: "NextStep",
     icon: "/projects/nextstep.png",
     summary: "Gestion des offres et candidatures d'emploi, avec suivi des relances et des entretiens.",
+    keywords: ["API REST"],
     domains: ["backend-business", "fullstack-web-mobile"],
     nature: "personal",
     visibility: "catalog",
@@ -390,32 +393,24 @@ export const projects: readonly Project[] = [
     category: "Analytics / Business Management",
     icon: "/projects/orbit.webp",
     summary:
-      "Outil métier interne de pilotage centralisé prévu pour l’analyse d’audience, les statistiques, le reporting automatisé et la gestion des sponsors et des campagnes publicitaires.",
+      "Outil métier de pilotage centralisé pour l’analyse d’audience, les statistiques, le reporting et la gestion des partenariats.",
+    keywords: ["Twig", "Doctrine ORM", "Symfony Console", "PHPUnit", "Docker Compose", "GitHub Actions"],
     domains: ["backend-business", "fullstack-web-mobile"],
     nature: "personal",
     visibility: "catalog",
     current: {
       statuses: ["development"],
       platforms: [{ kind: "web", availability: "targeted", responsive: true }],
+      implementedStack: {
+        languages: ["PHP"],
+        frameworks: ["Symfony 7.4 LTS"],
+        databases: ["PostgreSQL"],
+        complementary: ["Vue 3", "TypeScript", "Chart.js"],
+        logos: ["php", "symfony", "vue"],
+      },
       roadmap: {
         stack: {
-          languages: ["PHP"],
-          frameworks: ["Symfony"],
-          databases: ["PostgreSQL"],
-          complementary: [
-            "Vue.js",
-            "TypeScript",
-            "Twig",
-            "Doctrine ORM",
-            "API REST",
-            "Chart.js",
-            "Symfony Console",
-            "Symfony Mailer",
-            "PHPUnit",
-            "Docker",
-            "GitHub Actions / CI/CD",
-          ],
-          logos: ["php", "symfony", "vue"],
+          complementary: ["API REST", "Symfony Mailer"],
         },
         features: [
           "Tableau de bord Analytics multi-applications",
@@ -439,6 +434,7 @@ export const projects: readonly Project[] = [
     name: "Bootcamp",
     icon: "/projects/la-capsule.png",
     summary: "Projets réalisés à La Capsule, dont le catalogue de films MyMoviz et le jeu de dés Yam’s.",
+    keywords: ["API TMDB"],
     domains: ["fullstack-web-mobile"],
     nature: "training",
     visibility: "catalog",
