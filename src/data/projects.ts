@@ -49,7 +49,7 @@ type ProjectRelease = {
   platforms: readonly ProjectPlatform[];
   implementedStack?: ProjectStack;
   roadmap?: {
-    stack?: ProjectStack;
+    stack?: ProjectStack & { confirmed?: boolean };
     features?: readonly string[];
   };
   // Recruiter-facing destinations. Keep unresolved URLs out of this list.
@@ -399,6 +399,7 @@ export const projects: readonly Project[] = [
       platforms: [{ kind: "web", availability: "targeted", responsive: true }],
       roadmap: {
         stack: {
+          confirmed: true,
           languages: ["PHP"],
           frameworks: ["Symfony"],
           databases: ["PostgreSQL"],

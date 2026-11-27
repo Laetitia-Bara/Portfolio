@@ -20,6 +20,8 @@ export default function ProjectCard({ project }: { project: Project }) {
   const secondaryStack = implemented?.complementary ?? [];
   const plannedStack = getMainStack(planned);
   const plannedComplementary = planned?.complementary ?? [];
+  const plannedStackLabel = planned?.confirmed ? "Stack retenue" : "Stack envisagée";
+  const plannedTechnologies = planned?.confirmed ? "retenues" : "envisagées";
   const logos = implemented?.logos ?? planned?.logos;
   const hasLinks = Boolean(detailsHref || current.links.length);
 
@@ -54,7 +56,11 @@ export default function ProjectCard({ project }: { project: Project }) {
         </div>
 
         {logos && (
-          <ul aria-label={implemented?.logos ? "Logos technologiques" : "Logos des technologies envisagées"} className="flex shrink-0 gap-1 sm:gap-1.5" role="list">
+          <ul
+            aria-label={implemented?.logos ? "Logos technologiques" : `Logos des technologies ${plannedTechnologies}`}
+            className="flex shrink-0 gap-1 sm:gap-1.5"
+            role="list"
+          >
             {logos.map((technology) => {
               const { name, Icon, color } = technologies[technology];
               return (
@@ -121,13 +127,13 @@ export default function ProjectCard({ project }: { project: Project }) {
           )}
           {plannedStack.length > 0 && (
             <div>
-              <dt className="text-xs font-medium text-zinc-300">Stack envisagée</dt>
+              <dt className="text-xs font-medium text-zinc-300">{plannedStackLabel}</dt>
               <dd className="mt-1 text-xs font-medium leading-relaxed text-zinc-200">{plannedStack.join(" · ")}</dd>
             </div>
           )}
           {plannedComplementary.length > 0 && (
             <div>
-              <dt className="sr-only">Technologies complémentaires envisagées</dt>
+              <dt className="sr-only">Technologies complémentaires {plannedTechnologies}</dt>
               <dd className="text-xs leading-relaxed text-zinc-400">{plannedComplementary.join(" · ")}</dd>
             </div>
           )}
