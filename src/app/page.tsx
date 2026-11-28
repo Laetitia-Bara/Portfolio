@@ -160,9 +160,9 @@ export default function HomePage() {
             Certifications et formation
           </h3>
           <p className="mt-3 max-w-3xl text-sm leading-relaxed text-zinc-300">
-            Certifications officielles en cours : Java, SQL et PHP
-            Formation en cours : Kubernetes, Docker
-            Formations obtenues : BAC +4 - Conception / Développement d'applications + BAC +3 - Réseaux
+            <br>Certifications officielles en cours : Java, SQL et PHP</br>
+            <br>Formation en cours : Kubernetes, Docker</br>
+            <br>Formations obtenues : BAC +4 - Conception / Développement d'applications + BAC +3 - Réseaux</br>
           </p>
         </section>
       </Section>
