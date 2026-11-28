@@ -86,14 +86,12 @@ export default function HomePage() {
               <div>
                 <dt className="font-semibold text-zinc-100">Web</dt>
                 <dd>
-                  HTML, CSS, Tailwind CSS, JavaScript, TypeScript, React, Next.js et Vue 3
-                  (socle en développement de{" "}
-                  <Link href="/projects#nextstep" className={projectLink}>NextStep</Link>).
+                  HTML, CSS, Tailwind CSS, JavaScript, TypeScript, React, Next.js et Vue 3.
                 </dd>
               </div>
               <div>
                 <dt className="font-semibold text-zinc-100">Mobile</dt>
-                <dd>Dart / Flutter et React Native / Expo (LevelUp, en développement).</dd>
+                <dd>Dart / Flutter et React Native / Expo.</dd>
               </div>
               <div>
                 <dt className="font-semibold text-zinc-100">Interfaces métier</dt>
@@ -116,8 +114,7 @@ export default function HomePage() {
               <div>
                 <dt className="font-semibold text-zinc-100">Serveur et API</dt>
                 <dd>
-                  Java / Spring Boot, PHP / Symfony (API de{" "}
-                  <Link href="/projects#nextstep" className={projectLink}>NextStep</Link>),
+                  Java / Spring Boot, PHP / Symfony,
                   Python, Node.js / Express et API REST.
                 </dd>
               </div>
@@ -163,9 +160,9 @@ export default function HomePage() {
             Certifications et formation
           </h3>
           <p className="mt-3 max-w-3xl text-sm leading-relaxed text-zinc-300">
-            Je prépare une certification Java et je poursuis ma formation en SQL et PHP avec des
-            objectifs de certification. J’applique ces apprentissages dans Ablette et NextStep.
-            Kubernetes fait aussi partie de mon parcours de formation.
+            Certifications officielles en cours : Java, SQL et PHP
+            Formation en cours : Kubernetes, Docker
+            Formations obtenues : BAC +4 - Conception / Développement d'applications + BAC +3 - Réseaux
           </p>
         </section>
       </Section>
