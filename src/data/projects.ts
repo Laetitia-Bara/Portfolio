@@ -78,7 +78,7 @@ export const projects: readonly Project[] = [
     name: "BoB",
     icon: "/projects/bob.png",
     summary:
-      "BoB centralise les résultats d’expositions canines, le suivi des titres de champion et le carnet de santé des chiens.",
+      "BoB réunit les fiches chiens, la préparation des expositions et le suivi des résultats dans un carnet synchronisé sur le Web et sur mobile.",
     domains: ["fullstack-web-mobile", "backend-business"],
     nature: "professional",
     visibility: "featured",

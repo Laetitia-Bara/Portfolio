@@ -70,7 +70,7 @@ function StudyFigure({ image, hero = false }: { image: CaseStudyImage; hero?: bo
 
 export default function ProjectCaseStudy({ project, study }: { project: Project; study: CaseStudyContent }) {
   const { current, icon, name } = project;
-  const { architecture, context, delivered, heroImage, highlights, quality, screenshots, subtitle } = study;
+  const { architecture, context, delivered, featureOverview, heroImage, highlights, quality, screenshots, subtitle } = study;
   const badges = getProjectBadges(project);
   const stack = getMainStack(current.implementedStack);
   const upcoming = [
@@ -85,7 +85,8 @@ export default function ProjectCaseStudy({ project, study }: { project: Project;
   const hasRoadmap = upcoming.length > 0 || plannedStack.length > 0;
   const hasEvolution = !!delivered || hasRoadmap;
   const hasClosingSections = !!(screenshots?.length || quality || hasEvolution);
-  const hasSections = !!(context || architecture?.stages.length || highlights?.length || hasClosingSections);
+  const featureImages = featureOverview?.items.flatMap(({ image }) => (image ? [image] : [])) ?? [];
+  const hasSections = !!(context || featureOverview || architecture?.stages.length || highlights?.length || hasClosingSections);
 
   return (
     <article className="py-8 sm:py-12">
@@ -181,6 +182,28 @@ export default function ProjectCaseStudy({ project, study }: { project: Project;
                     <p>{context.role}</p>
                   </div>
                 )}
+              </div>
+            </StudySection>
+          )}
+
+          {featureOverview && (
+            <StudySection title="Fonctionnalités principales">
+              <p className="mb-4 max-w-3xl text-sm leading-relaxed text-zinc-300">{featureOverview.solution}</p>
+              <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" role="list">
+                {featureOverview.items.map(({ title, description }) => (
+                  <li key={title} className={`${panel} p-4 sm:p-5`}>
+                    <h3 className="font-semibold text-zinc-100">{title}</h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-zinc-300">{description}</p>
+                  </li>
+                ))}
+              </ul>
+            </StudySection>
+          )}
+
+          {featureImages.length > 0 && (
+            <StudySection title="Captures d’écran">
+              <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,16rem),1fr))] gap-4">
+                {featureImages.map((image) => <StudyFigure key={image.src} image={image} />)}
               </div>
             </StudySection>
           )}

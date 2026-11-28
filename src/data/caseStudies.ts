@@ -18,6 +18,10 @@ export type CaseStudyContent = {
     description: string;
     role?: string;
   };
+  featureOverview?: {
+    solution: string;
+    items: readonly (CaseStudyNote & { image?: CaseStudyImage })[];
+  };
   architecture?: {
     stages: readonly (CaseStudyNote & { stack: string })[];
     detail?: string;
@@ -83,72 +87,105 @@ export const caseStudies = {
       "Le carnet en développement permet de suivre le poids, la composition corporelle et l’hydratation, de tenir un journal et de sauvegarder ses données localement. L’interface propose les thèmes clair et sombre.",
   },
   bob: {
-    subtitle: "Carnet d’expositions canines et suivi des titres",
-    heroImage: {
-      src: "/projects/bob/suivi-titres.webp",
-      width: 600,
-      height: 1299,
-      alt: "Écran Suivi Titres de BoB, avec les titres regroupés par pays et la progression des titres français.",
-      caption: "L’écran Suivi Titres affiche la progression par titre. Capture publiée sur l’App Store.",
-    },
+    subtitle: "Gestion des expositions canines",
     context: {
       description:
-        "Après plusieurs expositions, il devient difficile de savoir quels résultats comptent pour un titre et quelles démarches restent à faire. BoB rattache les résultats à chaque chien et les transforme en étapes de suivi.",
-      role: "J’ai conçu le parcours de saisie et le modèle de données, puis développé l’interface Flutter et les règles de progression des titres.",
+        "Quand on présente plusieurs chiens dans différents pays, il faut retrouver le bon résultat, préparer le prochain déplacement et garder un historique par chien. Les informations sont souvent réparties entre calendriers, documents et notes prises sur le ring.",
+      role: "J’ai conçu les parcours et le modèle de données, développé l’application Flutter et son intégration Firebase, puis assuré sa publication et sa maintenance sur le Web, Android et iOS.",
+    },
+    featureOverview: {
+      solution:
+        "BoB relie les fiches chiens, les dates à venir et les résultats dans un même carnet. Une fois saisi, un résultat alimente l’historique, les statistiques et le suivi des titres.",
+      items: [
+        {
+          title: "Tableau de bord",
+          description: "Accès aux chiens, aux expositions, à l’agenda et aux outils de préparation depuis un même espace.",
+        },
+        {
+          title: "Fiches chiens",
+          description: "Gestion de plusieurs chiens, avec une fiche d’identité, un carnet de santé, l’historique des participations et le palmarès de chacun.",
+        },
+        {
+          title: "Expositions et résultats",
+          description: "Saisie du pays, du juge et de la classe, puis du qualificatif, du classement et des récompenses. L’historique se consulte avec des filtres.",
+          image: {
+            src: "/projects/bob/detail-exposition.png",
+            width: 276,
+            height: 512,
+            alt: "Écran de détail d’une exposition avec la date, le pays, le juge, les informations du chien et son classement.",
+            caption: "Le détail d’une exposition réunit les informations du concours et le résultat. L’identité du chien est masquée.",
+          },
+        },
+        {
+          title: "Calendrier et préparation",
+          description: "Agenda des expositions à venir, filtres, checklist de départ et mémo hôtel. Sur mobile, les rappels vaccinaux et les notifications d’exposition dépendent des préférences.",
+        },
+        {
+          title: "Statistiques et palmarès",
+          description: "Bilan des performances par chien, partage des résultats et du palmarès, pièces jointes et création de diplômes PDF.",
+          image: {
+            src: "/projects/bob/statistiques.webp",
+            width: 636,
+            height: 1005,
+            alt: "Onglet Statistiques avec un graphique en anneau par pays et un histogramme par type d’exposition.",
+            caption: "Les participations par pays et par type d’exposition. Extrait de la présentation de BoB.",
+          },
+        },
+        {
+          title: "Progression des titres",
+          description: "Les règles par pays et par titre déterminent les étapes remplies et les résultats manquants. L’organisme compétent reste responsable de l’homologation officielle.",
+          image: {
+            src: "/projects/bob/suivi-titres.webp",
+            width: 600,
+            height: 898,
+            alt: "Onglet Suivi Titres de BoB avec les titres regroupés par pays et une barre de progression pour chaque titre.",
+            caption: "Le suivi des titres affiche la progression par pays et par titre.",
+          },
+        },
+      ],
     },
     architecture: {
       stages: [
         {
-          title: "Saisie et consultation",
+          title: "Interface et modèles métier",
           stack: "Flutter / Dart",
-          description: "L’exposant enregistre une exposition et ses résultats dans le carnet de son chien.",
+          description: "Une base de code commune porte les parcours Web et mobiles. Les modèles relient les résultats aux fiches chiens pour alimenter l’historique et les calculs.",
         },
         {
-          title: "Compte et historique",
+          title: "Compte et synchronisation",
           stack: "Firebase Auth / Cloud Firestore",
-          description: "Firebase Auth identifie le compte. Firestore synchronise ses fiches chiens et ses résultats entre le Web et les applications mobiles.",
+          description: "L’identification rattache les données au compte. Les requêtes Firestore et les filtres par chien structurent la consultation, avec un carnet synchronisé entre les appareils.",
         },
         {
-          title: "Progression des titres",
-          stack: "Règles métier en Dart",
-          description: "L’application relit les résultats du chien et calcule la progression à partir des étapes remplies.",
+          title: "Photos et documents",
+          stack: "Cloudinary / Firebase Storage",
+          description: "Cloudinary sert les photos dans des formats adaptés à l’affichage. Firebase Storage gère les pièces jointes des expositions. Firestore conserve les références aux fichiers.",
         },
       ],
       detail:
-        "Les photos suivent un flux distinct. Cloudinary héberge les images et fournit les variantes d’affichage. Firestore conserve les références associées aux résultats.",
+        "Les règles de propriété Firestore contrôlent l’accès aux fiches et aux résultats du compte identifié. Le carnet personnel est accessible après connexion.",
     },
     highlights: [
       {
-        title: "Suivi des titres et progression métier",
+        title: "Règles variables selon les titres",
         description:
-          "Pour le Champion des Expositions Nationales Jeune (CHEN-J), BoB compte les CACS-J des expositions nationales françaises à partir du 1ᵉʳ juin 2023. Il affiche la progression et reprend les informations de confirmation et d’ADN de la fiche du chien. L’exposant vérifie les trois juges distincts et les conditions du club de race. La Centrale Canine homologue le titre sur dossier, à adresser au club.",
+          "Les règles Dart évaluent les résultats par pays, type d’exposition, période et récompense. Pour le titre national jeune français, BoB compte les CACS-J admissibles et laisse à l’exposant la vérification des juges distincts et des conditions du club de race.",
       },
       {
-        title: "Des résultats structurés par chien",
+        title: "Interface multilingue",
         description:
-          "Chaque résultat Firestore est rattaché au compte et au chien. Il distingue date, pays, type d’exposition, classe, juge, qualificatif, classement et récompenses. Le même historique alimente le palmarès et les filtres propres à chaque titre.",
+          "Les libellés de l’interface sont traduits dans des fichiers de ressources. Les données d’exposition gardent une structure commune pour comparer les résultats entre pays.",
       },
       {
-        title: "Statistiques, documents et préparation",
+        title: "Offre gratuite et Premium",
         description:
-          "Les statistiques par chien facilitent le bilan de saison. Les fiches, photos et documents aident à retrouver les éléments du dossier. Le calendrier, la checklist et le mémo hôtel et exposition accompagnent la préparation des déplacements.",
-      },
-    ],
-    screenshots: [
-      {
-        src: "/projects/bob/detail-exposition.png",
-        width: 276,
-        height: 512,
-        alt: "Fiche d’exposition BoB présentant le pays, le type d’exposition, le juge, la classe du chien, le classement et les récompenses.",
-        caption: "Le détail montre les données d’une exposition internationale, hors du périmètre du CHEN-J. Capture publiée sur Google Play.",
+          "Le carnet existe en version gratuite. Sur mobile, RevenueCat gère les droits Premium et AdMob la publicité. L’application adapte l’accès à certaines fonctions selon l’offre.",
       },
     ],
     quality: {
       detail:
-        "Les tests du CHCS vérifient que les expositions étrangères sont écartées et qu’un même identifiant ne compte qu’une fois. Les tests du championnat britannique vérifient qu’un juge répété ne satisfait pas l’exigence de juges distincts.",
+        "Les tests automatisés couvrent notamment les expositions hors périmètre, les doublons, les juges distincts pour les titres britanniques et la génération des diplômes PDF.",
     },
-    delivered:
-      "Le carnet est accessible sur le Web, Android et iOS. Il réunit le palmarès, le suivi des titres et le carnet de santé des chiens.",
   },
   lofy: {
     subtitle: "Suivi d’élevage canin, des chiens aux portées",
