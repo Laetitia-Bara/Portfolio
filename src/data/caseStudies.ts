@@ -109,7 +109,7 @@ export const caseStudies = {
           title: "Expositions et résultats",
           description: "Saisie du pays, du juge et de la classe, puis du qualificatif, du classement et des récompenses. L’historique se consulte avec des filtres.",
           image: {
-            src: "/projects/bob/detail-exposition.png",
+            src: "/projects/bob/detail-exposition-anonyme.png",
             width: 276,
             height: 512,
             alt: "Écran de détail d’une exposition avec la date, le pays, le juge, les informations du chien et son classement.",
@@ -135,7 +135,7 @@ export const caseStudies = {
           title: "Progression des titres",
           description: "Les règles par pays et par titre déterminent les étapes remplies et les résultats manquants. L’organisme compétent reste responsable de l’homologation officielle.",
           image: {
-            src: "/projects/bob/suivi-titres.webp",
+            src: "/projects/bob/suivi-titres-anonyme.webp",
             width: 600,
             height: 898,
             alt: "Onglet Suivi Titres de BoB avec les titres regroupés par pays et une barre de progression pour chaque titre.",
